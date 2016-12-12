@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31ECD961DFED59C00CBA094 /* LogCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */; };
+		C31ECD971DFED60700CBA094 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90B1DF314470072C7C5 /* Activity.swift */; };
 		C3CCB90C1DF314470072C7C5 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90B1DF314470072C7C5 /* Activity.swift */; };
+		C3CCB90E1DF3159E0072C7C5 /* LogCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */; };
 		C3E3DD461DF3088200D7EB5F /* LogCentral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E3DD3C1DF3088200D7EB5F /* LogCentral.framework */; };
 		C3E3DD4B1DF3088200D7EB5F /* LogCentralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */; };
 		C3E3DD4D1DF3088200D7EB5F /* LogCentral.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E3DD3F1DF3088200D7EB5F /* LogCentral.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3EE9D6C1DFF427A00724E5B /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90F1DF33C7F0072C7C5 /* Example.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +30,8 @@
 /* Begin PBXFileReference section */
 		C3CCB90A1DF30B5F0072C7C5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C3CCB90B1DF314470072C7C5 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCentral.swift; sourceTree = "<group>"; };
+		C3CCB90F1DF33C7F0072C7C5 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example.swift; path = ../LogCentral/Example.swift; sourceTree = "<group>"; };
 		C3E3DD3C1DF3088200D7EB5F /* LogCentral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogCentral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E3DD3F1DF3088200D7EB5F /* LogCentral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogCentral.h; sourceTree = "<group>"; };
 		C3E3DD401DF3088200D7EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 				C3E3DD3F1DF3088200D7EB5F /* LogCentral.h */,
 				C3E3DD401DF3088200D7EB5F /* Info.plist */,
 				C3CCB90B1DF314470072C7C5 /* Activity.swift */,
+				C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */,
 			);
 			path = LogCentral;
 			sourceTree = "<group>";
@@ -85,8 +92,9 @@
 		C3E3DD491DF3088200D7EB5F /* LogCentralTests */ = {
 			isa = PBXGroup;
 			children = (
-				C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */,
+				C3CCB90F1DF33C7F0072C7C5 /* Example.swift */,
 				C3E3DD4C1DF3088200D7EB5F /* Info.plist */,
+				C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */,
 			);
 			path = LogCentralTests;
 			sourceTree = "<group>";
@@ -158,6 +166,7 @@
 					};
 					C3E3DD441DF3088200D7EB5F = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -202,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3CCB90E1DF3159E0072C7C5 /* LogCentral.swift in Sources */,
 				C3CCB90C1DF314470072C7C5 /* Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,7 +220,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3EE9D6C1DFF427A00724E5B /* Example.swift in Sources */,
+				C31ECD961DFED59C00CBA094 /* LogCentral.swift in Sources */,
 				C3E3DD4B1DF3088200D7EB5F /* LogCentralTests.swift in Sources */,
+				C31ECD971DFED60700CBA094 /* Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,11 +384,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LogCentralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentralTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LogCentralTests/LogCentralTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -383,11 +400,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LogCentralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentralTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LogCentralTests/LogCentralTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

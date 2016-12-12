@@ -9,28 +9,32 @@
 import XCTest
 @testable import LogCentral
 
+
 class LogCentralTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    let myLogger = OSLog(subsystem: "HENRIK", category: "LOG TEST")
+    
+    func testXLog() {
+        let loguser = LogUser()
+        os_log("Swift", log: myLogger, type: .info)
+        loguser.sendALog(myLogger)
+        //verify that both "Swift" and "ObjC" are in the console log
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testXActivity() {
+        let loguser = LogUser()
+        
+        loguser.activity(with: myLogger)
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testWorksOnPhone() {
+        //tested on iOS 10.1
+        let loguser = LogUser()
+        loguser.worksOnPhone()
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testEnum() {
+        log_info(MyLoggers.Model, "Hi from model")
+        print("HHHHHH \(MyLoggers.Model)")
     }
-    
 }
