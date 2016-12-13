@@ -22,36 +22,36 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         self.init(subsystem: subsystem, categories: categories, crashlogger: nil)
     }
     
-    func activity(for type: U, in category: T, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
-        crashlog(description)
+    func activity(for activity: U, in category: T, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
+        crashlog(.info, description)
         
-        let options: Activity.Options = type.isTopLevel ? .detached : []
+        let options: Activity.Options = activity.isTopLevel ? .detached : []
         var scope = Activity(description, dso: dso, options: options).enter()
         body()
         scope.leave()
     }
     
-    func log(category: T, dso: UnsafeRawPointer?, type: Level, _ message: StaticString, _ args: CVarArg...) {
+    func log(category: T, dso: UnsafeRawPointer?, level: Level, _ message: StaticString, _ args: CVarArg...) {
         let messageString = LazyString(message: message, args)
         
-        console(messageString, category: category, dso: dso, type: type)
+        console(messageString, category: category, dso: dso, level: level)
         
-        if type != .debug {
-            crashlog(messageString)
+        if level != .debug {
+            crashlog(level, messageString)
         }
     }
     
-    private func console(_ message: LazyString, category: T, dso: UnsafeRawPointer?, type: Level) {
+    private func console(_ message: LazyString, category: T, dso: UnsafeRawPointer?, level lvl: Level) {
         if #available(iOS 10.0, *), let args = message.args {
-            os_log(message.message, dso: dso, log: osLoggers.osLog(for: category), type: type.osLogType, args)
+            os_log(message.message, dso: dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, args)
         } else {
             print(message)
         }
     }
     
-    private func crashlog(_ message: CustomStringConvertible) {
+    private func crashlog(_ level: Level, _ message: CustomStringConvertible) {
         if let crashlogger = crashlogger {
-            crashlogger(message.description)
+            crashlogger(message.description, level)
         }
     }
 }
