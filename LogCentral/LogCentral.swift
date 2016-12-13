@@ -12,7 +12,7 @@ import os.activity
 
 public typealias LogWriter = (_ message: String) -> Void
 
-public protocol LoggerSpec {
+public protocol CategorySpec {
     var rawValue: Int { get }
 }
 
@@ -20,41 +20,41 @@ public protocol ActivitySpec {
     var isTopLevel: Bool { get }
 }
 
-public class LogCentral3Lvl<T: LoggerSpec, U: ActivitySpec> {
+public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
     fileprivate let logManager: LogManager<T, U>
     
-    init(subsystem: String, loggers: [T]) {
-        logManager = LogManager(subsystem: subsystem, loggers: loggers)
+    init(subsystem: String, categories: [T]) {
+        logManager = LogManager(subsystem: subsystem, categories: categories)
     }
 
     ///Info level is for messages about things that will be helpful for troubleshooting an error
-    public final func info(in logSpec: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
-        logManager.log(log: logSpec, dso: dso, type: .info, message, args)
+    public final func info(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
+        logManager.log(category: category, dso: dso, type: .info, message, args)
     }
     
-    public final func debug(in logSpec: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
-        logManager.log(log: logSpec, dso: dso, type: .debug, message, args)
+    public final func debug(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
+        logManager.log(category: category, dso: dso, type: .debug, message, args)
     }
     
-    public final func error(in logSpec: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
-        logManager.log(log: logSpec, dso: dso, type: .error, message, args)
+    public final func error(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
+        logManager.log(category: category, dso: dso, type: .error, message, args)
     }
     
-    public final func activity(for type: U, in logSpec: T, dso: UnsafeRawPointer? = #dsohandle, _ description: StaticString, _ body: () -> Void) {
-        logManager.activity(for: type, in: logSpec, dso: dso, description, body)
+    public final func activity(for type: U, in category: T, dso: UnsafeRawPointer? = #dsohandle, _ description: StaticString, _ body: () -> Void) {
+        logManager.activity(for: type, in: category, dso: dso, description, body)
     }
 }
 
-public class LogCentral4Lvl<T: LoggerSpec, U: ActivitySpec>: LogCentral3Lvl<T, U> {
+public class LogCentral4Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral3Lvl<T, U> {
     ///Default level is for messages about things that might cause a failure
     public final func `default`(in logSpec: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
-        logManager.log(log: logSpec, dso: dso, type: .default, message, args)
+        logManager.log(category: logSpec, dso: dso, type: .default, message, args)
     }
 }
 
-public class LogCentral5Lvl<T: LoggerSpec, U: ActivitySpec>: LogCentral4Lvl<T, U> {
-    public final func fault(in logSpec: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
-        logManager.log(log: logSpec, dso: dso, type: .fault, message, args)
+public class LogCentral5Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral4Lvl<T, U> {
+    public final func fault(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
+        logManager.log(category: category, dso: dso, type: .fault, message, args)
     }
 }
 

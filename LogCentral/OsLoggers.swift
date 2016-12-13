@@ -9,7 +9,7 @@
 import Foundation
 import os.log
 
-struct OsLoggers<T: LoggerSpec> {
+struct OsLoggers<T: CategorySpec> {
     private let osLoggers:[OSLog]
     
     init(_ loggers: [T], subsystem: String) {
@@ -23,7 +23,7 @@ struct OsLoggers<T: LoggerSpec> {
         self.osLoggers = osLoggers
     }
     
-    func osLog(for log: LoggerSpec) -> OSLog {
+    func osLog(for log: CategorySpec) -> OSLog {
         assert(osLoggers.count > log.rawValue, "Please configure the loggers before using them")
         return osLoggers[log.rawValue]
     }

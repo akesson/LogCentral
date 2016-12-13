@@ -14,13 +14,13 @@ enum MyActivities: ActivitySpec {
     var isTopLevel: Bool { return self != .internal }
 }
 
-enum MyLoggers: Int, LoggerSpec {
+enum Categories: Int, CategorySpec {
     case View, ViewModel, Model, Service
     
-    static let asArray:[MyLoggers] = [.View, .ViewModel, .Model, .Service]
+    static let asArray:[Categories] = [.View, .ViewModel, .Model, .Service]
 }
 
-let log = LogCentral3Lvl<MyLoggers, MyActivities>(subsystem: "mobi.akesson.logcentral", loggers: MyLoggers.asArray)
+let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logcentral", categories: Categories.asArray)
 
 
 func test() {

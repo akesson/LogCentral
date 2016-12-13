@@ -9,20 +9,20 @@
 import Foundation
 import os.log
 
-struct LogManager<T: LoggerSpec, U: ActivitySpec> {
+struct LogManager<T: CategorySpec, U: ActivitySpec> {
     private let osLoggers: OsLoggers<T>
     private let crashlogger: LogWriter?
     
-    init(subsystem: String, loggers: [T], crashlogger: LogWriter?) {
-        self.osLoggers = OsLoggers(loggers, subsystem: subsystem)
+    init(subsystem: String, categories: [T], crashlogger: LogWriter?) {
+        self.osLoggers = OsLoggers(categories, subsystem: subsystem)
         self.crashlogger = crashlogger
     }
     
-    init(subsystem: String, loggers: [T]) {
-        self.init(subsystem: subsystem, loggers: loggers, crashlogger: nil)
+    init(subsystem: String, categories: [T]) {
+        self.init(subsystem: subsystem, categories: categories, crashlogger: nil)
     }
     
-    func activity(for type: U, in logSpec: T, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
+    func activity(for type: U, in category: T, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
         crashlog(description)
         
         let options: Activity.Options = type.isTopLevel ? .detached : []
@@ -31,19 +31,19 @@ struct LogManager<T: LoggerSpec, U: ActivitySpec> {
         scope.leave()
     }
     
-    func log(log: T, dso: UnsafeRawPointer?, type: Level, _ message: StaticString, _ args: CVarArg...) {
+    func log(category: T, dso: UnsafeRawPointer?, type: Level, _ message: StaticString, _ args: CVarArg...) {
         let messageString = LazyString(message: message, args)
         
-        console(messageString, log: log, dso: dso, type: type)
+        console(messageString, category: category, dso: dso, type: type)
         
         if type != .debug {
             crashlog(messageString)
         }
     }
     
-    private func console(_ message: LazyString, log: T, dso: UnsafeRawPointer?, type: Level) {
+    private func console(_ message: LazyString, category: T, dso: UnsafeRawPointer?, type: Level) {
         if #available(iOS 10.0, *), let args = message.args {
-            os_log(message.message, dso: dso, log: osLoggers.osLog(for: log), type: type.osLogType, args)
+            os_log(message.message, dso: dso, log: osLoggers.osLog(for: category), type: type.osLogType, args)
         } else {
             print(message)
         }
