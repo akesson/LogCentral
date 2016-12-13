@@ -31,7 +31,7 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         scope.leave()
     }
     
-    func log(category: T, dso: UnsafeRawPointer?, level: Level, _ message: StaticString, _ args: CVarArg...) {
+    func log(category: T, dso: UnsafeRawPointer?, level: LogLevel, _ message: StaticString, _ args: CVarArg...) {
         let messageString = LazyString(message: message, args)
         
         console(messageString, category: category, dso: dso, level: level)
@@ -41,7 +41,7 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         }
     }
     
-    private func console(_ message: LazyString, category: T, dso: UnsafeRawPointer?, level lvl: Level) {
+    private func console(_ message: LazyString, category: T, dso: UnsafeRawPointer?, level lvl: LogLevel) {
         if #available(iOS 10.0, *), let args = message.args {
             os_log(message.message, dso: dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, args)
         } else {
@@ -49,7 +49,7 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         }
     }
     
-    private func crashlog(_ level: Level, _ message: CustomStringConvertible) {
+    private func crashlog(_ level: LogLevel, _ message: CustomStringConvertible) {
         if let crashlogger = crashlogger {
             crashlogger(message.description, level)
         }

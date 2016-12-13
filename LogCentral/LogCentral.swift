@@ -10,7 +10,7 @@ import Foundation
 import os.log
 import os.activity
 
-public typealias LogWriter = (_ message: String, _ level: Level) -> Void
+public typealias LogWriter = (_ message: String, _ level: LogLevel) -> Void
 
 public protocol CategorySpec {
     var rawValue: Int { get }
