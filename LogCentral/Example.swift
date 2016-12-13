@@ -8,8 +8,10 @@
 
 import Foundation
 
-enum Activities: Int, LoggerSpec {
-    case user, extenal, `internal`
+enum MyActivities: ActivitySpec {
+    case user, external, `internal`
+    
+    var isTopLevel: Bool { return self != .internal }
 }
 
 enum MyLoggers: Int, LoggerSpec {
@@ -18,5 +20,9 @@ enum MyLoggers: Int, LoggerSpec {
     static let asArray:[MyLoggers] = [.View, .ViewModel, .Model, .Service]
 }
 
-let log = LogCentral<MyLoggers>(subsystem: "com.klap.piercus", loggers: MyLoggers.asArray)
+let log = LogCentral3Lvl<MyLoggers, MyActivities>(subsystem: "mobi.akesson.logcentral", loggers: MyLoggers.asArray)
 
+
+func test() {
+    log.debug(in: .Model, "")
+}
