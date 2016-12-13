@@ -11,19 +11,14 @@ import os.log
 
 struct LogManager<T: CategorySpec, U: ActivitySpec> {
     private let osLoggers: OsLoggers<T>
-    private let crashlogger: LogWriter?
+    private let loggers: [LoggerSpec]
     
-    init(subsystem: String, categories: [T], crashlogger: LogWriter?) {
+    init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
         self.osLoggers = OsLoggers(categories, subsystem: subsystem)
-        self.crashlogger = crashlogger
-    }
-    
-    init(subsystem: String, categories: [T]) {
-        self.init(subsystem: subsystem, categories: categories, crashlogger: nil)
+        self.loggers = loggers
     }
     
     func activity(for activity: U, in category: T, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
-        crashlog(.info, description)
         
         let options: Activity.Options = activity.isTopLevel ? .detached : []
         var scope = Activity(description, dso: dso, options: options).enter()
@@ -34,24 +29,25 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
     func log(category: T, dso: UnsafeRawPointer?, level: LogLevel, _ message: StaticString, _ args: CVarArg...) {
         let messageString = LazyString(message: message, args)
         
-        console(messageString, category: category, dso: dso, level: level)
-        
-        if level != .debug {
-            crashlog(level, messageString)
+        toConsole(messageString, category: category, dso: dso, level: level)
+        toLoggers(messageString, level: level)
+    }
+    
+    func toLoggers(_ message: LazyString, level lvl: LogLevel) {
+        for logger in loggers {
+            for levels in logger.levels {
+                if levels == lvl {
+                    logger.writer(message.description, lvl)
+                }
+            }
         }
     }
     
-    private func console(_ message: LazyString, category: T, dso: UnsafeRawPointer?, level lvl: LogLevel) {
+    private func toConsole(_ message: LazyString, category: T, dso: UnsafeRawPointer?, level lvl: LogLevel) {
         if #available(iOS 10.0, *), let args = message.args {
             os_log(message.message, dso: dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, args)
         } else {
             print(message)
-        }
-    }
-    
-    private func crashlog(_ level: LogLevel, _ message: CustomStringConvertible) {
-        if let crashlogger = crashlogger {
-            crashlogger(message.description, level)
         }
     }
 }

@@ -10,8 +10,6 @@ import Foundation
 import os.log
 import os.activity
 
-public typealias LogWriter = (_ message: String, _ level: LogLevel) -> Void
-
 public protocol CategorySpec {
     var rawValue: Int { get }
 }
@@ -23,8 +21,8 @@ public protocol ActivitySpec {
 public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
     fileprivate let logManager: LogManager<T, U>
     
-    init(subsystem: String, categories: [T]) {
-        logManager = LogManager(subsystem: subsystem, categories: categories)
+    init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
+        logManager = LogManager(subsystem: subsystem, categories: categories, loggers: loggers)
     }
 
     ///Info level is for messages about things that will be helpful for troubleshooting an error

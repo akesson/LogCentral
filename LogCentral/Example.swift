@@ -20,7 +20,12 @@ enum Categories: Int, CategorySpec {
     static let asArray:[Categories] = [.View, .ViewModel, .Model, .Service]
 }
 
-let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logcentral", categories: Categories.asArray)
+let crashLogger = LogWriter(levels: [.info]) {
+    (message, level) in
+    //write something somewhere
+}
+
+let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logcentral", categories: Categories.asArray, loggers: [crashLogger])
 
 
 func test() {
