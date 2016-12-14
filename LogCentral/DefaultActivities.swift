@@ -16,7 +16,7 @@ import Foundation
  - external: An external event (triggered by the os)
  - internal: An internal activity which helps divide the logs into logical parts
  */
-enum DefaultActivities: ActivitySpec {
+public enum DefaultActivities: ActivitySpec {
     /// A user initiated activity (button click etc.). Starts a new
     /// top level activity.
     case user

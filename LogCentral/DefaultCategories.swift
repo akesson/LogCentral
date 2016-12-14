@@ -9,14 +9,14 @@
 import Foundation
 
 
-enum MVVMS: Int, CategorySpec {
+public enum MVVMS: Int, CategorySpec {
     case View, ViewModel, Model, Service
     
     static let asArray:[MVVMS] = [.View, .ViewModel, .Model, .Service]
 }
 
 
-enum MVCS: Int, CategorySpec {
+public enum MVCS: Int, CategorySpec {
     case View, Model, Controller, Service
     
     static let asArray:[MVCS] = [.View, .Model, .Controller, .Service]
