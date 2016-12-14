@@ -18,14 +18,14 @@ public protocol ActivitySpec {
     var isTopLevel: Bool { get }
 }
 
-public protocol ObjCLogger {
+protocol ObjCLogger {
     func toLoggers(_ lvl: LogLevel, _ message: String)
 }
 
 public class LogCentral<T: CategorySpec, U: ActivitySpec>: ObjCLogger {
     fileprivate let logManager: LogManager<T, U>
     
-    public func toLoggers(_ lvl: LogLevel, _ message: String) {
+    func toLoggers(_ lvl: LogLevel, _ message: String) {
         logManager.toLoggers(lvl, message)
     }
     

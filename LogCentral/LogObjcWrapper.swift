@@ -8,10 +8,10 @@
 
 import Foundation
 
-@objc class LogObjcWrapper: NSObject {
+@objc public class LogObjcWrapper: NSObject {
     private let logger: ObjCLogger
     
-    init(logger: ObjCLogger) {
+    public init<T, U>(logger: LogCentral<T, U>) {
         self.logger = logger
     }
     
