@@ -27,13 +27,17 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
     }
     
     func log(category: T, dso: UnsafeRawPointer?, level: LogLevel, _ message: StaticString, _ args: CVarArg...) {
-        let messageString = LazyString(message: message, args)
+        let messageString = LazyString(message, args)
         
         toConsole(messageString, category: category, dso: dso, level: level)
         toLoggers(messageString, level: level)
     }
     
-    func toLoggers(_ message: LazyString, level lvl: LogLevel) {
+    func toLoggers(_ lvl: LogLevel, _ message: String) {
+        toLoggers(LazyString(message), level: lvl)
+    }
+    
+    private func toLoggers(_ message: LazyString, level lvl: LogLevel) {
         for logger in loggers {
             for levels in logger.levels {
                 if levels == lvl {

@@ -18,12 +18,24 @@ public protocol ActivitySpec {
     var isTopLevel: Bool { get }
 }
 
-public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
+public protocol ObjCLogger {
+    func toLoggers(_ lvl: LogLevel, _ message: String)
+}
+
+public class LogCentral<T: CategorySpec, U: ActivitySpec>: ObjCLogger {
     fileprivate let logManager: LogManager<T, U>
+    
+    public func toLoggers(_ lvl: LogLevel, _ message: String) {
+        logManager.toLoggers(lvl, message)
+    }
     
     init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
         logManager = LogManager(subsystem: subsystem, categories: categories, loggers: loggers)
     }
+    
+}
+
+public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral<T, U> {
 
     ///Info level is for messages about things that will be helpful for troubleshooting an error
     public final func info(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {

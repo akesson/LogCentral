@@ -25,13 +25,16 @@ final class LazyString: CustomStringConvertible {
         return _string!
     }
     
-    init(message: StaticString, _ args: CVarArg...) {
+    init(_ message: StaticString, _ args: CVarArg...) {
         self.message = message
         self.args = args
     }
     
-    init(message: StaticString) {
-        self.message = message
+    init(_ message: String) {
+        self._string = message
+        self.message = ""
         self.args = nil
     }
+    
+    
 }

@@ -28,6 +28,6 @@ let crashLogger = LogWriter(levels: [.info]) {
 let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logcentral", categories: Categories.asArray, loggers: [crashLogger])
 
 
-func test() {
+func xtest() {
     log.debug(in: .Model, "")
 }
