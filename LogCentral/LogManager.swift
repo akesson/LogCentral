@@ -10,10 +10,10 @@ import Foundation
 import os.log
 
 struct LogManager<T: CategorySpec, U: ActivitySpec> {
-    private let osLoggers: OsLoggers<T>
+    private let osLoggers: OsLoggers
     private let loggers: [LoggerSpec]
     
-    init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
+    init<T: CategorySpec>(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
         self.osLoggers = OsLoggers(categories, subsystem: subsystem)
         self.loggers = loggers
     }

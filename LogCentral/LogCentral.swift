@@ -29,10 +29,9 @@ public class LogCentral<T: CategorySpec, U: ActivitySpec>: ObjCLogger {
         logManager.toLoggers(lvl, message)
     }
     
-    init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
+    public init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
         logManager = LogManager(subsystem: subsystem, categories: categories, loggers: loggers)
     }
-    
 }
 
 public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral<T, U> {

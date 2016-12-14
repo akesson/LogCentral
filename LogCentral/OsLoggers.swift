@@ -9,10 +9,10 @@
 import Foundation
 import os.log
 
-struct OsLoggers<T: CategorySpec> {
+struct OsLoggers {
     private let osLoggers:[OSLog]
     
-    init(_ loggers: [T], subsystem: String) {
+    init<T: CategorySpec>(_ loggers: [T], subsystem: String) {
         var osLoggers = [OSLog]()
         if #available(iOS 10.0, *) {
             for logger in loggers {
