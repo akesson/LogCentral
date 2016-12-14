@@ -29,5 +29,5 @@ public enum DefaultActivities: ActivitySpec {
     /// like "searching database", "filtering results", "updating ui".
     case `internal`
     
-    var isTopLevel: Bool { return self != .internal }
+    public var isTopLevel: Bool { return self != .internal }
 }
