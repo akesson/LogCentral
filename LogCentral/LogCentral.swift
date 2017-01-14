@@ -18,16 +18,8 @@ public protocol ActivitySpec {
     var isTopLevel: Bool { get }
 }
 
-protocol ObjCLogger {
-    func toLoggers(_ lvl: LogLevel, _ message: String)
-}
-
-public class LogCentral<T: CategorySpec, U: ActivitySpec>: ObjCLogger {
+public class LogCentral<T: CategorySpec, U: ActivitySpec> {
     fileprivate let logManager: LogManager<T, U>
-    
-    func toLoggers(_ lvl: LogLevel, _ message: String) {
-        logManager.toLoggers(lvl, message)
-    }
     
     public init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
         logManager = LogManager(subsystem: subsystem, categories: categories, loggers: loggers)
@@ -37,20 +29,57 @@ public class LogCentral<T: CategorySpec, U: ActivitySpec>: ObjCLogger {
 public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral<T, U> {
 
     ///Info level is for messages about things that will be helpful for troubleshooting an error
-    public final func info(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
+    public final func info(in category: T,
+                           dso: UnsafeRawPointer? = #dsohandle,
+                           file:String = #file,
+                           line:Int = #line,
+                           function:String = #function,
+                           _ message: StaticString,
+                           _ args: CVarArg...) {
         logManager.log(category: category, dso: dso, level: .info, message, args)
     }
     
-    public final func debug(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
+    public final func debug(in category: T,
+                            dso: UnsafeRawPointer? = #dsohandle,
+                            file:String = #file,
+                            line:Int = #line,
+                            function:String = #function,
+                            _ message: StaticString,
+                            _ args: CVarArg...) {
         logManager.log(category: category, dso: dso, level: .debug, message, args)
     }
     
-    public final func error(in category: T, dso: UnsafeRawPointer? = #dsohandle, _ message: StaticString, _ args: CVarArg...) {
+    public final func error(in category: T,
+                            dso: UnsafeRawPointer? = #dsohandle,
+                            file:String = #file,
+                            line:Int = #line,
+                            function:String = #function,
+                            _ message: StaticString,
+                            _ args: CVarArg...) {
         logManager.log(category: category, dso: dso, level: .error, message, args)
     }
     
-    public final func activity(for type: U, in category: T, dso: UnsafeRawPointer? = #dsohandle, _ description: StaticString, _ body: () -> Void) {
+    public final func activity(for type: U,
+                               in category: T,
+                               dso: UnsafeRawPointer? = #dsohandle,
+                               file:String = #file,
+                               line:Int = #line,
+                               function:String = #function, 
+                               _ description: StaticString,
+                               _ body: () -> Void) {
+        
         logManager.activity(for: type, in: category, dso: dso, description, body)
+    }
+    
+    public final func activity(for type: U,
+                               in category: T,
+                               dso: UnsafeRawPointer? = #dsohandle,
+                               file:String = #file,
+                               line:Int = #line,
+                               function:String = #function,
+                               _ body: () -> Void) {
+        
+        
     }
 }
 

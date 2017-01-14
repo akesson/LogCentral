@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C31ECD961DFED59C00CBA094 /* LogCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */; };
 		C31ECD971DFED60700CBA094 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90B1DF314470072C7C5 /* Activity.swift */; };
-		C354E1091E0155C000DE56AE /* LogObjcWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C354E1081E0155C000DE56AE /* LogObjcWrapper.swift */; };
 		C382E0911E0075C50070124D /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LogWriter.swift */; };
 		C382E0921E0077EB0070124D /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LogWriter.swift */; };
 		C3C3B6621DFFE1BD000962E0 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE9D711DFFE09500724E5B /* LogLevel.swift */; };
@@ -43,7 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C354E1081E0155C000DE56AE /* LogObjcWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogObjcWrapper.swift; sourceTree = "<group>"; };
 		C382E0901E0075C50070124D /* LogWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWriter.swift; sourceTree = "<group>"; };
 		C3C3B6651DFFE24A000962E0 /* DefaultActivities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultActivities.swift; sourceTree = "<group>"; };
 		C3C3B6671DFFE260000962E0 /* DefaultCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCategories.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				C3C3B6671DFFE260000962E0 /* DefaultCategories.swift */,
 				C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */,
 				C382E0901E0075C50070124D /* LogWriter.swift */,
-				C354E1081E0155C000DE56AE /* LogObjcWrapper.swift */,
 			);
 			path = LogCentral;
 			sourceTree = "<group>";
@@ -242,7 +239,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C354E1091E0155C000DE56AE /* LogObjcWrapper.swift in Sources */,
 				C3C3B66C1DFFFAC3000962E0 /* LogManager.swift in Sources */,
 				C3EE9D6E1DFFDFC400724E5B /* LazyString.swift in Sources */,
 				C382E0911E0075C50070124D /* LogWriter.swift in Sources */,
