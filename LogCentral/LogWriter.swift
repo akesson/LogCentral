@@ -19,4 +19,9 @@ public protocol LoggerSpec {
 public struct LogWriter: LoggerSpec {
     public let levels: [LogLevel]
     public let writer: LogWrite
+    
+    public init(levels: [LogLevel], writer: @escaping LogWrite) {
+        self.levels = levels
+        self.writer = writer
+    }
 }

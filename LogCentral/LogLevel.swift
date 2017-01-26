@@ -9,7 +9,7 @@
 import Foundation
 import os.log
 
-@objc public enum LogLevel: Int {
+public enum LogLevel: Int {
     case info, debug, `default`, error, fault
     
     @available(iOS 10.0, *)
