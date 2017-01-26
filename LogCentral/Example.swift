@@ -29,7 +29,7 @@ let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logc
 
 
 func xtest() {
-    log.debug(in: .Model, "")
-    log.activity(for: .external, in: .View) { 
+    log.info(in: .Model, "")
+    log.activity(for: .external, in: .View, "·") {
     }
 }

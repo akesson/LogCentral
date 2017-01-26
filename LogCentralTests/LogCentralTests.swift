@@ -13,7 +13,7 @@ import XCTest
 class LogCentralTests: XCTestCase {
 
     func testExampleLog() {
-        log.debug(in: .Model, "")
+        log.debug(in: .Model, "Howdy \(3+2)")
         log.activity(for: .external, in: .Model, "") {
             
         }

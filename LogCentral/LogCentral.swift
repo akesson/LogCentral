@@ -31,9 +31,8 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
                            file:String = #file,
                            line:Int = #line,
                            function:String = #function,
-                           _ message: StaticString,
-                           _ args: CVarArg...) {
-        logManager.log(category: category, dso: dso, level: .info, message, args)
+                           _ message: String) {
+        logManager.log(category: category, dso: dso, level: .info, message)
     }
     
     public final func debug(in category: T,
@@ -41,9 +40,8 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
                             file:String = #file,
                             line:Int = #line,
                             function:String = #function,
-                            _ message: StaticString,
-                            _ args: CVarArg...) {
-        logManager.log(category: category, dso: dso, level: .debug, message, args)
+                            _ message: String) {
+        logManager.log(category: category, dso: dso, level: .debug, message)
     }
     
     public final func error(in category: T,
@@ -51,9 +49,8 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
                             file:String = #file,
                             line:Int = #line,
                             function:String = #function,
-                            _ message: StaticString,
-                            _ args: CVarArg...) {
-        logManager.log(category: category, dso: dso, level: .error, message, args)
+                            _ message: String) {
+        logManager.log(category: category, dso: dso, level: .error, message)
     }
     
     public final func activity(for type: U,
@@ -66,38 +63,25 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
                                _ body: () -> Void) {
         
         logManager.activity(for: type, in: category, dso: dso, description, body)
-    }
-    
-    public final func activity(for type: U,
-                               in category: T,
-                               dso: UnsafeRawPointer? = #dsohandle,
-                               file:String = #file,
-                               line:Int = #line,
-                               function:String = #function,
-                               _ body: () -> Void) {
-        
-        
-    }
+    }    
 }
 
 public class LogCentral4Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral3Lvl<T, U> {
     ///Default level is for messages about things that might cause a failure
     public final func `default`(in logSpec: T,
                                 dso: UnsafeRawPointer? = #dsohandle,
-                                _ message: StaticString,
-                                _ args: CVarArg...) {
+                                _ message: String) {
         
-        logManager.log(category: logSpec, dso: dso, level: .default, message, args)
+        logManager.log(category: logSpec, dso: dso, level: .default, message)
     }
 }
 
 public class LogCentral5Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral4Lvl<T, U> {
     public final func fault(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
-                            _ message: StaticString,
-                            _ args: CVarArg...) {
+                            _ message: String) {
         
-        logManager.log(category: category, dso: dso, level: .fault, message, args)
+        logManager.log(category: category, dso: dso, level: .fault, message)
     }
 }
 

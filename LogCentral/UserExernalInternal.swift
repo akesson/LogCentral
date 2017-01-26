@@ -1,5 +1,5 @@
 //
-//  DefaultActivities.swift
+//  UserExernalInternal.swift
 //  LogCentral
 //
 //  Created by Henrik Akesson on 13/12/16.

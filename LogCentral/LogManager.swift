@@ -26,30 +26,24 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         scope.leave()
     }
     
-    func log(category: T, dso: UnsafeRawPointer?, level: LogLevel, _ message: StaticString, _ args: CVarArg...) {
-        let messageString = LazyString(message, args)
-        
-        toConsole(messageString, category: category, dso: dso, level: level)
-        toLoggers(messageString, level: level)
+    func log(category: T, dso: UnsafeRawPointer?, level: LogLevel, _ message: String) {
+        toConsole(message, category: category, dso: dso, level: level)
+        toLoggers(message, level: level)
     }
     
-    func toLoggers(_ lvl: LogLevel, _ message: String) {
-        toLoggers(LazyString(message), level: lvl)
-    }
-    
-    private func toLoggers(_ message: LazyString, level lvl: LogLevel) {
+    private func toLoggers(_ message: String, level lvl: LogLevel) {
         for logger in loggers {
             for levels in logger.levels {
                 if levels == lvl {
-                    logger.writer(message.description, lvl)
+                    logger.writer(message, lvl)
                 }
             }
         }
     }
     
-    private func toConsole(_ message: LazyString, category: T, dso: UnsafeRawPointer?, level lvl: LogLevel) {
-        if #available(iOS 10.0, *), let args = message.args {
-            os_log(message.message, dso: dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, args)
+    private func toConsole(_ message: String, category: T, dso: UnsafeRawPointer?, level lvl: LogLevel) {
+        if #available(iOS 10.0, *) {
+            os_log("%@", dso: dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, message)
         } else {
             print(message)
         }
