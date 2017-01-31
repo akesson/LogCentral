@@ -50,9 +50,31 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
                             line:Int = #line,
                             function:String = #function,
                             _ message: String) {
-        logManager.log(category: category, dso: dso, level: .error, message)
+        let error = NSError(domain: "logcentral", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
+        logManager.log(category: category, dso: dso, message, error)
     }
-    
+
+    public final func error(in category: T,
+                            dso: UnsafeRawPointer? = #dsohandle,
+                            file:String = #file,
+                            line:Int = #line,
+                            function:String = #function,
+                            _ message: String,
+                            _ error: NSError) {
+        
+        logManager.log(category: category, dso: dso, message, error)
+    }
+
+    public final func error(in category: T,
+                            dso: UnsafeRawPointer? = #dsohandle,
+                            file:String = #file,
+                            line:Int = #line,
+                            function:String = #function,
+                            _ error: NSError) {
+        let message = error.localizedDescription
+         logManager.log(category: category, dso: dso, message, error)
+    }
+
     public final func activity(for type: U,
                                in category: T,
                                dso: UnsafeRawPointer? = #dsohandle,

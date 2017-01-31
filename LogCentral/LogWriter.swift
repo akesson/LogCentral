@@ -9,19 +9,23 @@
 import Foundation
 
 
-public typealias LogWrite = (_ message: String, _ level: LogLevel) -> Void
+public typealias LogMessageWriter = (_ message: String, _ level: LogLevel) -> Void
+public typealias LogErrorObjectWriter = (_ error: NSError) -> Void
 
 public protocol LoggerSpec {
     var levels: [LogLevel] { get }
-    var writer: LogWrite { get }
+    var messageWriter: LogMessageWriter { get }
+    var errorObjectWriter: LogErrorObjectWriter? { get }
 }
 
 public struct LogWriter: LoggerSpec {
     public let levels: [LogLevel]
-    public let writer: LogWrite
+    public let messageWriter: LogMessageWriter
+    public let errorObjectWriter: LogErrorObjectWriter?
     
-    public init(levels: [LogLevel], writer: @escaping LogWrite) {
+    public init(levels: [LogLevel], messageWriter: @escaping LogMessageWriter, errorObjectWriter: LogErrorObjectWriter?) {
         self.levels = levels
-        self.writer = writer
+        self.messageWriter = messageWriter
+        self.errorObjectWriter = errorObjectWriter
     }
 }

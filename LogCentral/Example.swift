@@ -20,9 +20,10 @@ enum Categories: Int, CategorySpec {
     static let asArray:[Categories] = [.View, .ViewModel, .Model, .Service]
 }
 
-let crashLogger = LogWriter(levels: [.info]) {
-    (message, level) in
-    //write something somewhere
+let crashLogger = LogWriter(levels: [.info], messageWriter: { (msg, lvl) in
+    //log messages here
+}) { (err) in
+    //log handled error objects here
 }
 
 let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logcentral", categories: Categories.asArray, loggers: [crashLogger])

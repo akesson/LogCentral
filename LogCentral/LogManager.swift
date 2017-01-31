@@ -26,18 +26,24 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         scope.leave()
     }
     
+    //log errors
+    func log(category: T, dso: UnsafeRawPointer?, _ message: String, _ error: NSError) {
+        toConsole(message, category: category, dso: dso, level: .error)
+        toLoggers(message, level: .error)
+        loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
+            logger.errorObjectWriter?(error)
+        }
+    }
+    
+    //log messages
     func log(category: T, dso: UnsafeRawPointer?, level: LogLevel, _ message: String) {
         toConsole(message, category: category, dso: dso, level: level)
         toLoggers(message, level: level)
     }
     
     private func toLoggers(_ message: String, level lvl: LogLevel) {
-        for logger in loggers {
-            for levels in logger.levels {
-                if levels == lvl {
-                    logger.writer(message, lvl)
-                }
-            }
+        loggers.filter { $0.levels.contains(lvl) }.forEach { (logger) in
+            logger.messageWriter(message, lvl)
         }
     }
     
