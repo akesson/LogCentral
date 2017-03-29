@@ -1,6 +1,8 @@
 language: objective-c
-cache: bundler
+osx_image: xcode8.3
 xcode_project: LogCentral.xcodeproj
 xcode_scheme: LogCentral
-osx_image: xcode8.3
-xcode_sdk: iphonesimulator10.1
+xcode_sdk: iphonesimulator10.3
+script:
+- xcodebuild clean build test -project LogCentral.xcodeproj -scheme LogCentral -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3' ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild clean build -project LogCentral.xcodeproj -scheme LogCentral -configuration Release -sdk iphoneos SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO | xcpretty -c
