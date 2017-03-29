@@ -202,7 +202,9 @@ public struct Activity {
     public static func labelUserAction(_ description: StaticString, dso: UnsafeRawPointer? = #dsohandle) {
         description.withUTF8Buffer { (buf: UnsafeBufferPointer<UInt8>) in
             let str = unsafeBitCast(buf.baseAddress!, to: UnsafePointer<Int8>.self)
-            _os_activity_label_useraction(UnsafeMutableRawPointer(mutating: dso), str)
+            if let dso = dso {
+                _os_activity_label_useraction(UnsafeMutableRawPointer(mutating: dso), str)
+            }
         }
     }
     
