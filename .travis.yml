@@ -1,0 +1,5 @@
+language: objective-c
+cache: bundler
+xcode_project: LogCentral.xcodeproj
+xcode_scheme: LogCentral
+osx_image: xcode8.3
