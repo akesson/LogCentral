@@ -3,3 +3,4 @@ cache: bundler
 xcode_project: LogCentral.xcodeproj
 xcode_scheme: LogCentral
 osx_image: xcode8.3
+xcode_sdk: iphonesimulator10.1
