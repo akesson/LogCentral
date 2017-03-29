@@ -5,12 +5,13 @@ xcode_scheme: LogCentral
 xcode_sdk: iphonesimulator10.3
 script:
 - xcodebuild clean build test -project LogCentral.xcodeproj -scheme LogCentral -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3' ONLY_ACTIVE_ARCH=NO | xcpretty -c
-- xcodebuild clean build -project LogCentral.xcodeproj -scheme LogCentral -configuration Release -sdk iphoneos SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- carthage build --no-skip-current --platform iOS
+- carthage archive LogCentral
 deploy:
   provider: releases
   api_key:
     secure: wutOcJX1SLYin+p9Y2+6dZSGm+WjyBUmY7m042MbhfW00hTgWi912qa80ftAaOewOegfRShRXyYconyvX6lQai+pZyvdTwa7C3HS5hzAMd/x5DOGKfxV4XqsUQ0oGn/M01NGRBvL+z78IME60VsCVu7CIUg4jaQIQptxWu6A3Vg9q8BfUnQNaiXEZIvLQKaVq7okd4knRCoVqtojE2BLxQvsEd+iuQflHWWlwk+XWsmMjb0heqDaR7qVzE1lRZLT+1y8j1wdGz4cMaNK0qWmnRAN7PN/nooXpGADxOClg9YWdSNYQkFC8d9keQw+blmqrY387eY/9GroWFFaTJS/2UFDJZWG6sbGzPRhUkailHLnxQXkvHvdor0ImPXp1CXUPTGsSAlLXTjthgWXatsPeNP3OpLogpCkzxwY47DQU1lfIivMlkjlTjiSF3v9POmTdY5tZirCQzK9HXvU8oSuevzTlG4a34vpNYC0PFPeZ/6V6vgzX76VRWId16a0gWpN1gSn/TrBjLVyKddBcSDnyQBNqLMNpilmrCBW87KJfyEgoOVf7RHXIAhgW5w9RnIHZFjqj/aVr6PUiCyUI8a+bLtOfqAZusxCRziYJziI5Q9ZUNQGVKxJO0IVoxxOR2b8ZPAUWPoyio/O3tXSLhn9Mn6Kd7zoiXwNs4YjNiZ9OlY=
-  file: build/Release-iphoneos/LogCentral.framework
+  file: LogCentral.framework.zip
   skip_cleanup: true
   on:
     tags: true
