@@ -91,7 +91,7 @@ public struct Activity {
         self.opaque = description.withUTF8Buffer { (buf: UnsafeBufferPointer<UInt8>) -> AnyObject in
             let str = buf.baseAddress!.withMemoryRebound(to: Int8.self, capacity: 8, { $0 })
             let flags = os_activity_flag_t(rawValue: options.rawValue)
-            if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *), OS_ACTIVITY_OBJECT_API != 0 {
+            if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
                 return _os_activity_create(dso, str, OS_ACTIVITY_CURRENT, flags)
             } else {
                 return LegacyActivityContext(dsoHandle: dso, description: str, flags: flags)
@@ -100,7 +100,7 @@ public struct Activity {
     }
     
     private func active(execute body: @convention(block) () -> Void) {
-        if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *), OS_ACTIVITY_OBJECT_API != 0 {
+        if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
             _os_activity_apply(opaque, body)
         } else {
             let context = opaque as! LegacyActivityContext
@@ -139,7 +139,7 @@ public struct Activity {
         
         /// Pops activity state to `self`.
         public mutating func leave() {
-            if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *), OS_ACTIVITY_OBJECT_API != 0 {
+            if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
                 _os_activity_scope_leave(&state)
             } else {
                 UnsafeRawPointer(bitPattern: Int(state.opaque.0)).map(Unmanaged<AnyObject>.fromOpaque)?.release()
@@ -159,7 +159,7 @@ public struct Activity {
     ///
     public func enter() -> Scope {
         var scope = Scope()
-        if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *), OS_ACTIVITY_OBJECT_API != 0 {
+        if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
             _os_activity_scope_enter(opaque, &scope.state)
         } else {
             let context = opaque as! LegacyActivityContext
