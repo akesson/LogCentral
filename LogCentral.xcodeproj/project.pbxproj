@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AFE7A3F22033393600548594 /* LogCentral.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = LogCentral.podspec; sourceTree = "<group>"; };
 		C382E0901E0075C50070124D /* LogWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWriter.swift; sourceTree = "<group>"; };
 		C3C3B6651DFFE24A000962E0 /* UserExernalInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserExernalInternal.swift; sourceTree = "<group>"; };
 		C3C3B6671DFFE260000962E0 /* DefaultCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCategories.swift; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		C3E3DD321DF3088200D7EB5F = {
 			isa = PBXGroup;
 			children = (
+				AFE7A3F22033393600548594 /* LogCentral.podspec */,
 				C3E3DD3E1DF3088200D7EB5F /* LogCentral */,
 				C3E3DD491DF3088200D7EB5F /* LogCentralTests */,
 				C3E3DD3D1DF3088200D7EB5F /* Products */,
