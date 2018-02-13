@@ -88,8 +88,8 @@
 		C3E3DD321DF3088200D7EB5F = {
 			isa = PBXGroup;
 			children = (
-				AFE7A3F3203339CE00548594 /* Documentation */,
 				AFE7A3F22033393600548594 /* LogCentral.podspec */,
+				AFE7A3F3203339CE00548594 /* Documentation */,
 				C3E3DD3E1DF3088200D7EB5F /* LogCentral */,
 				C3E3DD491DF3088200D7EB5F /* LogCentralTests */,
 				C3E3DD3D1DF3088200D7EB5F /* Products */,
