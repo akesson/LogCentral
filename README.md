@@ -13,3 +13,5 @@ The specific logging needs identified are:
 - QA logs: The fact that user activities are logged makes it easy to know what happened before the issue is produced. Solves much of the problem of a tester not giving a detailed enough description to reproduce the issue. 
 - Crash logs: Services like Crashlytics and Apteligent gathers crash logs, but it is often difficult to identify the reason for the log without knowing what led up to it. These services offers a possiblity of including a limited size log in the crash report.
 - Statistics logging: There is a need to log statstical information to services like Mixpanel, Flurry etc. This need is not part of the scope for the moment.
+
+Note that in order to see any logging output you need to open the Console.app and enable info and debug messages ![screenshot](Documentation/ConsoleMenu.png)
