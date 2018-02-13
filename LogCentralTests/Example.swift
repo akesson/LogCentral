@@ -16,9 +16,9 @@ enum MyActivities: ActivitySpec {
 }
 
 enum Categories: Int, CategorySpec {
-    case View, ViewModel, Model, Service
+    case view, model
     
-    static let asArray:[Categories] = [.View, .ViewModel, .Model, .Service]
+    static let asArray:[Categories] = [.view, .model]
 }
 
 let crashLogger = LogWriter(levels: [.info], messageWriter: { (msg, lvl) in
