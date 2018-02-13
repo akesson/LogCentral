@@ -31,6 +31,6 @@ let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logc
 
 func xtest() {
     log.info(in: .Model, "")
-    log.activity(for: .external, in: .View, "·") {
+    log.activity(for: .external, "·") {
     }
 }
