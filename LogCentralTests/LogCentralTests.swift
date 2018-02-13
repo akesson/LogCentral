@@ -12,10 +12,30 @@ import XCTest
 
 class LogCentralTests: XCTestCase {
 
+    func testActivity() {
+        let myActivity = Activity("MY_ACTIVITY", parent: .none)
+        var scope = myActivity.enter()
+        defer { scope.leave() }
+
+        log.error(in: .Model, "Howdy \(3+2)")
+
+        
+        let mySecondActivity = Activity("SECOND_ACTIVITY")
+        var scope2 = mySecondActivity.enter()
+        
+        log.error(in: .Model, "MY_ERROR")
+        scope2.leave()
+    }
+
     func testExampleLog() {
-        log.debug(in: .Model, "Howdy \(3+2)")
-        log.activity(for: .external, in: .Model, "") {
+        log.error(in: .Model, "TEST WRAPPED")
+
+        log.activity(for: .external, "MY_ACTIVITY_WRAPPED") {
+            log.info(in: .View, "SOME ERROR WRAPPED")
             
+            log.activity(for: .internal, "MY_ACTIVITY_WRAPPED_2", {
+                log.debug(in: .View, "SOME ERROR WRAPPED 2")
+            })
         }
     }
 }

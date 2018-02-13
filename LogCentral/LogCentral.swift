@@ -76,7 +76,6 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
     }
 
     public final func activity(for type: U,
-                               in category: T,
                                dso: UnsafeRawPointer? = #dsohandle,
                                file:String = #file,
                                line:Int = #line,
@@ -84,7 +83,7 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
                                _ description: StaticString,
                                _ body: () -> Void) {
         
-        logManager.activity(for: type, in: category, dso: dso, description, body)
+        logManager.activity(for: type, dso: dso, description, body)
     }    
 }
 

@@ -18,7 +18,7 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         self.loggers = loggers
     }
     
-    func activity(for activity: U, in category: T, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
+    func activity(for activity: U, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
         
         let options: Activity.Options = activity.isTopLevel ? .detached : []
         var scope = Activity(description, dso: dso, options: options).enter()
