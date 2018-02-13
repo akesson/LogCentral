@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LogCentral"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A modern swift logging utility made for the real needs."
   s.license      = "MIT"
   s.author       = { "Henrik Akesson" => "info@akesson.mobi" }
