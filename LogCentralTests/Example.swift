@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@testable import LogCentral
 
 enum MyActivities: ActivitySpec {
     case user, external, `internal`
@@ -29,8 +30,3 @@ let crashLogger = LogWriter(levels: [.info], messageWriter: { (msg, lvl) in
 let log = LogCentral3Lvl<Categories, MyActivities>(subsystem: "mobi.akesson.logcentral", categories: Categories.asArray, loggers: [crashLogger])
 
 
-func xtest() {
-    log.info(in: .Model, "")
-    log.activity(for: .external, "·") {
-    }
-}
