@@ -75,15 +75,15 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
          logManager.log(category: category, dso: dso, message, error)
     }
 
-    public final func activity(for type: U,
-                               dso: UnsafeRawPointer? = #dsohandle,
-                               file:String = #file,
-                               line:Int = #line,
-                               function:String = #function, 
-                               _ description: StaticString,
-                               _ body: () throws -> Void) rethrows {
+    public final func activity<T>(for type: U,
+                                  dso: UnsafeRawPointer? = #dsohandle,
+                                  file:String = #file,
+                                  line:Int = #line,
+                                  function:String = #function,
+                                  _ description: StaticString,
+                                  _ body: () throws -> T) rethrows -> T {
         
-        try logManager.activity(for: type, dso: dso, description, body)
+        return try logManager.activity(for: type, dso: dso, description, body)
     }    
 }
 
