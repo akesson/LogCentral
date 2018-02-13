@@ -12,6 +12,8 @@ import os.activity
 
 public protocol CategorySpec {
     var rawValue: Int { get }
+    
+    static var asArray: [Self] { get }
 }
 
 public protocol ActivitySpec {
@@ -21,8 +23,8 @@ public protocol ActivitySpec {
 public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
     fileprivate let logManager: LogManager<T, U>
     
-    public init(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
-        logManager = LogManager(subsystem: subsystem, categories: categories, loggers: loggers)
+    public init(subsystem: String, loggers: [LoggerSpec]) {
+        logManager = LogManager(subsystem: subsystem, categories: T.asArray, loggers: loggers)
     }
 
     ///Info level is for messages about things that will be helpful for troubleshooting an error
