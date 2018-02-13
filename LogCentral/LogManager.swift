@@ -17,13 +17,15 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         self.osLoggers = OsLoggers(categories, subsystem: subsystem)
         self.loggers = loggers
     }
-    
-    func activity(for activity: U, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () -> Void) {
+    // () throws -> Return
+    func activity(for activity: U, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> Void) rethrows {
         
         let options: Activity.Options = activity.isTopLevel ? .detached : []
         var scope = Activity(description, dso: dso, options: options).enter()
-        body()
-        scope.leave()
+        defer {
+            scope.leave()
+        }
+        try body()
     }
     
     //log errors

@@ -9,15 +9,16 @@
 import XCTest
 @testable import LogCentral
 
-
+enum TestError: Error {
+    case test
+}
 class LogCentralTests: XCTestCase {
 
     func testActivity() {
         let myActivity = Activity("MY_ACTIVITY", parent: .none)
-        var scope = myActivity.enter()
-        defer { scope.leave() }
-
-        log.error(in: .Model, "Howdy \(3+2)")
+        myActivity.active {
+            log.error(in: .Model, "Howdy \(3+2)")
+        }
 
         
         let mySecondActivity = Activity("SECOND_ACTIVITY")
@@ -37,5 +38,31 @@ class LogCentralTests: XCTestCase {
                 log.debug(in: .View, "SOME ERROR WRAPPED 2")
             })
         }
+    }
+    
+    func testError() {
+        log.error(in: .Model, "TEST WRAPPED")
+        
+        var caught = false
+        do {
+            try log.activity(for: .external, "MY_ACTIVITY_WRAPPED") {
+                log.info(in: .View, "SOME ERROR WRAPPED")
+                
+                log.info(in: .View, "SOME ERROR WRAPPED")
+                
+                try throwser()
+                
+            }
+        } catch TestError.test {
+            caught = true
+        } catch {
+            
+        }
+        
+        XCTAssert(caught)
+    }
+    
+    func throwser() throws {
+        throw TestError.test
     }
 }

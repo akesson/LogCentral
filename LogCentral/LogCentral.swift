@@ -81,9 +81,9 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
                                line:Int = #line,
                                function:String = #function, 
                                _ description: StaticString,
-                               _ body: () -> Void) {
+                               _ body: () throws -> Void) rethrows {
         
-        logManager.activity(for: type, dso: dso, description, body)
+        try logManager.activity(for: type, dso: dso, description, body)
     }    
 }
 
