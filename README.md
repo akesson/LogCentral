@@ -15,3 +15,6 @@ The specific logging needs identified are:
 - Statistics logging: There is a need to log statstical information to services like Mixpanel, Flurry etc. This need is not part of the scope for the moment.
 
 Note that in order to see any logging output you need to open the Console.app and enable info and debug messages ![screenshot](Documentation/ConsoleMenu.png)
+
+There are [example categories](LogCentralTests/ExampleCategories.swift) that can be copy pasted
+to your own configuration or you can create your own.
