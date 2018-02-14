@@ -12,6 +12,37 @@ import XCTest
 enum TestError: Error {
     case test
 }
+
+class TestLogger {
+    let levels: [LogLevel]
+    var lastLog: (level: LogLevel, message: String)?
+    var lastError: Error?
+    
+    var last: String {
+        if let error = lastError {
+            return error.localizedDescription
+        } else if let log = lastLog {
+            return "[\(log.level)] \(log.message)"
+        } else {
+            return "Nothing logged"
+        }
+    }
+    
+    lazy var logger: LogWriter = {
+        return LogWriter(levels: levels, messageWriter: { (msg, lvl) in
+            self.lastLog = (lvl, msg)
+            self.lastError = nil
+        }) { (error) in
+            self.lastLog = nil
+            self.lastError = error
+        }
+    }()
+    
+    init(_ levels: [LogLevel]) {
+        self.levels = levels
+    }
+}
+
 class LogCentralTests: XCTestCase {
 
     func testActivity() {
@@ -62,6 +93,55 @@ class LogCentralTests: XCTestCase {
         XCTAssert(caught)
     }
     
+    func testOneCustomLogger() {
+        let testLogger = TestLogger([.info])
+
+        log.info(in: .view, "not yet configured")
+        XCTAssertEqual(testLogger.last, "Nothing logged")
+        
+        LogCentral.loggers = [testLogger.logger]
+        
+        log.info(in: .view, "first log")
+        XCTAssertEqual(testLogger.last, "[info] first log")
+        
+        log.debug(in: .view, "should not appear in testlogger")
+        XCTAssertEqual(testLogger.last, "[info] first log")
+    }
+
+    func testTwoCustomLoggers() {
+        let infoLogger = TestLogger([.info])
+        let debugLogger = TestLogger([.debug])
+        
+        log.info(in: .view, "not yet configured")
+        XCTAssertEqual(infoLogger.last, "Nothing logged")
+        XCTAssertEqual(debugLogger.last, "Nothing logged")
+        
+        LogCentral.loggers = [infoLogger.logger, debugLogger.logger]
+        
+        log.info(in: .view, "first log")
+        XCTAssertEqual(infoLogger.last, "[info] first log")
+        XCTAssertEqual(debugLogger.last, "Nothing logged")
+
+        log.debug(in: .view, "second log")
+        XCTAssertEqual(infoLogger.last, "[info] first log")
+        XCTAssertEqual(debugLogger.last, "[debug] second log")
+    }
+
+    func testOneDualLevelLogger() {
+        let infoLogger = TestLogger([.info, .debug])
+        
+        log.info(in: .view, "not yet configured")
+        XCTAssertEqual(infoLogger.last, "Nothing logged")
+        
+        LogCentral.loggers = [infoLogger.logger]
+        
+        log.info(in: .view, "first log")
+        XCTAssertEqual(infoLogger.last, "[info] first log")
+        
+        log.debug(in: .view, "second log")
+        XCTAssertEqual(infoLogger.last, "[debug] second log")
+    }
+
     func throwser() throws {
         throw TestError.test
     }
