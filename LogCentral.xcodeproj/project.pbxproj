@@ -7,15 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C31ECD961DFED59C00CBA094 /* LogCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */; };
-		C31ECD971DFED60700CBA094 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90B1DF314470072C7C5 /* Activity.swift */; };
 		C382E0911E0075C50070124D /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LogWriter.swift */; };
-		C382E0921E0077EB0070124D /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LogWriter.swift */; };
-		C3C3B6621DFFE1BD000962E0 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE9D711DFFE09500724E5B /* LogLevel.swift */; };
-		C3C3B6631DFFE1C0000962E0 /* OsLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE9D6F1DFFDFFC00724E5B /* OsLoggers.swift */; };
 		C3C3B66A1DFFE755000962E0 /* ExampleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */; };
 		C3C3B66C1DFFFAC3000962E0 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */; };
-		C3C3B66D1DFFFB17000962E0 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */; };
 		C3CCB90C1DF314470072C7C5 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90B1DF314470072C7C5 /* Activity.swift */; };
 		C3CCB90E1DF3159E0072C7C5 /* LogCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */; };
 		C3E3DD461DF3088200D7EB5F /* LogCentral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E3DD3C1DF3088200D7EB5F /* LogCentral.framework */; };
@@ -256,13 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3EE9D6C1DFF427A00724E5B /* Example.swift in Sources */,
-				C31ECD961DFED59C00CBA094 /* LogCentral.swift in Sources */,
 				C3E3DD4B1DF3088200D7EB5F /* LogCentralTests.swift in Sources */,
-				C382E0921E0077EB0070124D /* LogWriter.swift in Sources */,
-				C3C3B6631DFFE1C0000962E0 /* OsLoggers.swift in Sources */,
-				C3C3B66D1DFFFB17000962E0 /* LogManager.swift in Sources */,
-				C3C3B6621DFFE1BD000962E0 /* LogLevel.swift in Sources */,
-				C31ECD971DFED60700CBA094 /* Activity.swift in Sources */,
 				C3C3B66A1DFFE755000962E0 /* ExampleCategories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

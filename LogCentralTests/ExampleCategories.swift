@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+@testable import LogCentral
 
 public enum MVVMS: Int, CategorySpec {
     /// For logging made in the view (in MVVMS)
