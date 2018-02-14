@@ -16,11 +16,20 @@ public protocol CategorySpec {
     static var asArray: [Self] { get }
 }
 
+
+/**
+ The loggers here are custom loggers that specifies
+ the log level they are listening to. For those they
+ will be called each time a log is made. This variable
+ is global for the LogCentral framework
+ */
+public var loggers = [LoggerSpec]()
+
 public class LogCentral3Lvl<T: CategorySpec> {
     fileprivate let logManager: LogManager<T>
     
-    public init(subsystem: String, loggers: [LoggerSpec]) {
-        logManager = LogManager(subsystem: subsystem, categories: T.asArray, loggers: loggers)
+    public init(subsystem: String) {
+        logManager = LogManager(subsystem: subsystem, categories: T.asArray)
     }
 
     ///Info level is for messages about things that will be helpful for troubleshooting an error

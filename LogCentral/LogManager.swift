@@ -11,11 +11,9 @@ import os.log
 
 struct LogManager<T: CategorySpec> {
     private let osLoggers: OsLoggers
-    private let loggers: [LoggerSpec]
     
-    init<T: CategorySpec>(subsystem: String, categories: [T], loggers: [LoggerSpec]) {
+    init<T: CategorySpec>(subsystem: String, categories: [T]) {
         self.osLoggers = OsLoggers(categories, subsystem: subsystem)
-        self.loggers = loggers
     }
 
     func activity<T>(dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
@@ -40,7 +38,7 @@ struct LogManager<T: CategorySpec> {
     func log(category: T, dso: UnsafeRawPointer?, _ message: String, _ error: NSError) {
         toConsole(message, category: category, dso: dso, level: .error)
         toLoggers(message, level: .error)
-        loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
+        LogCentral.loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
             logger.errorObjectWriter?(error)
         }
     }
@@ -52,7 +50,7 @@ struct LogManager<T: CategorySpec> {
     }
     
     private func toLoggers(_ message: String, level lvl: LogLevel) {
-        loggers.filter { $0.levels.contains(lvl) }.forEach { (logger) in
+        LogCentral.loggers.filter { $0.levels.contains(lvl) }.forEach { (logger) in
             logger.messageWriter(message, lvl)
         }
     }
