@@ -1,5 +1,5 @@
 //
-//  DefaultCategories.swift
+//  ExampleCategories.swift
 //  LogCentral
 //
 //  Created by Henrik Akesson on 13/12/16.
