@@ -31,10 +31,10 @@ class LogCentralTests: XCTestCase {
     func testExampleLog() {
         log.error(in: .model, "TEST WRAPPED")
 
-        log.activity(for: .external, "MY_ACTIVITY_WRAPPED") {
+        log.rootActivity("MY_ACTIVITY_WRAPPED") {
             log.info(in: .view, "SOME ERROR WRAPPED")
             
-            log.activity(for: .internal, "MY_ACTIVITY_WRAPPED_2", {
+            log.activity("MY_ACTIVITY_WRAPPED_2", {
                 log.debug(in: .view, "SOME ERROR WRAPPED 2")
             })
         }
@@ -45,7 +45,7 @@ class LogCentralTests: XCTestCase {
         
         var caught = false
         do {
-            try log.activity(for: .external, "MY_ACTIVITY_WRAPPED") {
+            try log.rootActivity("MY_ACTIVITY_WRAPPED") {
                 log.info(in: .view, "SOME ERROR WRAPPED")
                 
                 log.info(in: .view, "SOME ERROR WRAPPED")

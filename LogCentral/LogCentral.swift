@@ -16,12 +16,8 @@ public protocol CategorySpec {
     static var asArray: [Self] { get }
 }
 
-public protocol ActivitySpec {
-    var isTopLevel: Bool { get }
-}
-
-public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
-    fileprivate let logManager: LogManager<T, U>
+public class LogCentral3Lvl<T: CategorySpec> {
+    fileprivate let logManager: LogManager<T>
     
     public init(subsystem: String, loggers: [LoggerSpec]) {
         logManager = LogManager(subsystem: subsystem, categories: T.asArray, loggers: loggers)
@@ -77,19 +73,40 @@ public class LogCentral3Lvl<T: CategorySpec, U: ActivitySpec> {
          logManager.log(category: category, dso: dso, message, error)
     }
 
-    public final func activity<T>(for type: U,
-                                  dso: UnsafeRawPointer? = #dsohandle,
+    /**
+     An internal activity, typically used for splitting the work into
+     logical segments like "searching database", "filtering results",
+     "updating ui". Will be nested inside of any previous activities,
+     if any.
+     */
+    public final func activity<T>(dso: UnsafeRawPointer? = #dsohandle,
                                   file:String = #file,
                                   line:Int = #line,
                                   function:String = #function,
                                   _ description: StaticString,
                                   _ body: () throws -> T) rethrows -> T {
         
-        return try logManager.activity(for: type, dso: dso, description, body)
-    }    
+        return try logManager.activity(dso: dso, description, body)
+    }
+    
+    /**
+     Normally a user initiated activity (button click etc.) or an
+     externally triggered event typically originating from the OS
+     by events like CoreData change, Photos change.
+     Starts a new top level activity in the console.
+     */
+    public final func rootActivity<T>(dso: UnsafeRawPointer? = #dsohandle,
+                                      file:String = #file,
+                                      line:Int = #line,
+                                      function:String = #function,
+                                      _ description: StaticString,
+                                      _ body: () throws -> T) rethrows -> T {
+        
+        return try logManager.activity(dso: dso, description, body)
+    }
 }
 
-public class LogCentral4Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral3Lvl<T, U> {
+public class LogCentral4Lvl<T: CategorySpec>: LogCentral3Lvl<T> {
     ///Default level is for messages about things that might cause a failure
     public final func `default`(in logSpec: T,
                                 dso: UnsafeRawPointer? = #dsohandle,
@@ -99,7 +116,7 @@ public class LogCentral4Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral3Lvl<T,
     }
 }
 
-public class LogCentral5Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral4Lvl<T, U> {
+public class LogCentral5Lvl<T: CategorySpec>: LogCentral4Lvl<T> {
     public final func fault(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
                             _ message: String) {
@@ -107,4 +124,3 @@ public class LogCentral5Lvl<T: CategorySpec, U: ActivitySpec>: LogCentral4Lvl<T,
         logManager.log(category: category, dso: dso, level: .fault, message)
     }
 }
-

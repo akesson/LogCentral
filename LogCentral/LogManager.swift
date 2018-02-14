@@ -9,7 +9,7 @@
 import Foundation
 import os.log
 
-struct LogManager<T: CategorySpec, U: ActivitySpec> {
+struct LogManager<T: CategorySpec> {
     private let osLoggers: OsLoggers
     private let loggers: [LoggerSpec]
     
@@ -17,17 +17,25 @@ struct LogManager<T: CategorySpec, U: ActivitySpec> {
         self.osLoggers = OsLoggers(categories, subsystem: subsystem)
         self.loggers = loggers
     }
-    // () throws -> Return
-    func activity<T>(for activity: U, dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
+
+    func activity<T>(dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
         
-        let options: Activity.Options = activity.isTopLevel ? .detached : []
-        var scope = Activity(description, dso: dso, options: options).enter()
+        var scope = Activity(description, dso: dso).enter()
         defer {
             scope.leave()
         }
         return try body()
     }
-    
+
+    func rootActivity<T>(dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
+        
+        var scope = Activity(description, dso: dso, options: .detached).enter()
+        defer {
+            scope.leave()
+        }
+        return try body()
+    }
+
     //log errors
     func log(category: T, dso: UnsafeRawPointer?, _ message: String, _ error: NSError) {
         toConsole(message, category: category, dso: dso, level: .error)
