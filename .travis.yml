@@ -1,10 +1,10 @@
 language: objective-c
-osx_image: xcode8.3
+osx_image: xcode9.2
 xcode_project: LogCentral.xcodeproj
 xcode_scheme: LogCentral
-xcode_sdk: iphonesimulator10.3
+xcode_sdk: iphonesimulator11.2
 script:
-- xcodebuild clean build test -project LogCentral.xcodeproj -scheme LogCentral -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3' ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild clean build test -project LogCentral.xcodeproj -scheme LogCentral -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.2' ONLY_ACTIVE_ARCH=NO | xcpretty -c
 - carthage build --no-skip-current --platform iOS
 - carthage archive LogCentral
 deploy:
