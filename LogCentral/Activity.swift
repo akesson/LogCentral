@@ -60,12 +60,12 @@ private let OS_ACTIVITY_NONE = unsafeBitCast(dlsym(UnsafeMutableRawPointer(bitPa
 @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
 private let OS_ACTIVITY_CURRENT = unsafeBitCast(dlsym(UnsafeMutableRawPointer(bitPattern: -2), "_os_activity_current"), to: Unmanaged<AnyObject>.self)
 
-public struct Activity {
+internal struct Activity {
     
     /// Support flags for OSActivity.
-    public struct Options: OptionSet {
-        public let rawValue: UInt32
-        public init(rawValue: UInt32) {
+    internal struct Options: OptionSet {
+        internal let rawValue: UInt32
+        internal init(rawValue: UInt32) {
             self.rawValue = rawValue
         }
         
@@ -75,19 +75,19 @@ public struct Activity {
         /// only note what activity "created" the new one, but will make the
         /// new activity a top level activity. This allows seeing what
         /// activity triggered work without actually relating the activities.
-        public static let detached = Options(rawValue: OS_ACTIVITY_FLAG_DETACHED.rawValue)
+        internal static let detached = Options(rawValue: OS_ACTIVITY_FLAG_DETACHED.rawValue)
         /// Will only create a new activity if none present.
         ///
         /// If an activity ID is already present, a new activity will be
         /// returned with the same underlying activity ID.
         @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
-        public static let ifNonePresent = Options(rawValue: OS_ACTIVITY_FLAG_IF_NONE_PRESENT.rawValue)
+        internal static let ifNonePresent = Options(rawValue: OS_ACTIVITY_FLAG_IF_NONE_PRESENT.rawValue)
     }
     
     private let opaque: AnyObject
     
     /// Creates an activity.
-    public init(_ description: StaticString, dso: UnsafeRawPointer? = #dsohandle, options: Options = []) {
+    internal init(_ description: StaticString, dso: UnsafeRawPointer? = #dsohandle, options: Options = []) {
         self.opaque = description.withUTF8Buffer { (buf: UnsafeBufferPointer<UInt8>) -> AnyObject in
             let str = buf.baseAddress!.withMemoryRebound(to: Int8.self, capacity: 8, { $0 })
             let flags = os_activity_flag_t(rawValue: options.rawValue)
@@ -109,7 +109,7 @@ public struct Activity {
     }
     
     /// Executes a function body within the context of the activity.
-    public func active<Return>(execute body: () throws -> Return) rethrows -> Return {
+    internal func active<Return>(execute body: () throws -> Return) rethrows -> Return {
         func impl(execute work: () throws -> Return, recover: (Error) throws -> Return) rethrows -> Return {
             var result: Return?
             var error: Error?
@@ -133,12 +133,12 @@ public struct Activity {
     
     /// Opaque structure created by `Activity.enter()` and restored using
     /// `leave()`.
-    public struct Scope {
+    internal struct Scope {
         fileprivate var state = os_activity_scope_state_s()
         fileprivate init() {}
         
         /// Pops activity state to `self`.
-        public mutating func leave() {
+        internal mutating func leave() {
             if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
                 _os_activity_scope_leave(&state)
             } else {
@@ -157,7 +157,7 @@ public struct Activity {
     ///    defer { scope.leave() }
     ///    ... do some work ...
     ///
-    public func enter() -> Scope {
+    internal func enter() -> Scope {
         var scope = Scope()
         if #available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
             _os_activity_scope_enter(opaque, &scope.state)
@@ -171,7 +171,7 @@ public struct Activity {
     
     /// Creates an activity.
     @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
-    public init(_ description: StaticString, dso: UnsafeRawPointer? = #dsohandle, parent: Activity, options: Options = []) {
+    internal init(_ description: StaticString, dso: UnsafeRawPointer? = #dsohandle, parent: Activity, options: Options = []) {
         self.opaque = description.withUTF8Buffer { (buf: UnsafeBufferPointer<UInt8>) -> AnyObject in
             let str = buf.baseAddress!.withMemoryRebound(to: Int8.self, capacity: 8, { $0 })
             let flags = os_activity_flag_t(rawValue: options.rawValue)
@@ -186,7 +186,7 @@ public struct Activity {
     /// An activity with no traits; as a parent, it is equivalent to a
     /// detached activity.
     @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
-    public static var none: Activity {
+    internal static var none: Activity {
         return Activity(OS_ACTIVITY_NONE.takeUnretainedValue())
     }
     
@@ -195,7 +195,7 @@ public struct Activity {
     /// As a parent, the new activity is linked to the current activity, if one
     /// is present. If no activity is present, it behaves the same as `.none`.
     @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
-    public static var current: Activity {
+    internal static var current: Activity {
         return Activity(OS_ACTIVITY_CURRENT.takeUnretainedValue())
     }
     
@@ -216,7 +216,7 @@ public struct Activity {
     ///
     /// Where the underlying name will be "gesture:" or "menuSelect:".
     @available(OSX 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
-    public static func labelUserAction(_ description: StaticString, dso: UnsafeRawPointer? = #dsohandle) {
+    internal static func labelUserAction(_ description: StaticString, dso: UnsafeRawPointer? = #dsohandle) {
         description.withUTF8Buffer { (buf: UnsafeBufferPointer<UInt8>) in
             let str = buf.baseAddress!.withMemoryRebound(to: Int8.self, capacity: 8, { $0 })
             _os_activity_label_useraction(UnsafeMutableRawPointer(mutating: dso!), str)
