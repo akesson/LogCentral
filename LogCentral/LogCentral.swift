@@ -21,10 +21,17 @@ public protocol CategorySpec {
  The loggers here are custom loggers that specifies
  the log level they are listening to. For those they
  will be called each time a log is made. This variable
- is global for the LogCentral framework
+ is global for the LogCentral framework.
+ 
+ The LogLevels that this logger receives depends on
+ the logger created. Ie:
+ - LogCentral3Lvl: debug, error, info
+ - LogCentral4Lvl: debug, error, info, default
+ - LogCentral5Lvl: debug, error, info, default, fatal
  */
 public var loggers = [LoggerSpec]()
 
+/// A LogCentral with the log levels: debug, error, info
 public class LogCentral3Lvl<T: CategorySpec> {
     fileprivate let logManager: LogManager<T>
     
@@ -115,6 +122,7 @@ public class LogCentral3Lvl<T: CategorySpec> {
     }
 }
 
+/// A LogCentral with the log levels: debug, error, info, default
 public class LogCentral4Lvl<T: CategorySpec>: LogCentral3Lvl<T> {
     ///Default level is for messages about things that might cause a failure
     public final func `default`(in logSpec: T,
@@ -124,7 +132,7 @@ public class LogCentral4Lvl<T: CategorySpec>: LogCentral3Lvl<T> {
         logManager.log(category: logSpec, dso: dso, level: .default, message)
     }
 }
-
+/// A LogCentral with the log levels: debug, error, info, default, fault
 public class LogCentral5Lvl<T: CategorySpec>: LogCentral4Lvl<T> {
     public final func fault(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
