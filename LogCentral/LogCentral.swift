@@ -64,7 +64,9 @@ public class LogCentral3Lvl<T: CategorySpec> {
                             line:Int = #line,
                             function:String = #function,
                             _ message: String) {
-        let error = NSError(domain: "logcentral", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
+        let error = NSError(domain: logManager.subsystem,
+                            code: 0,
+                            userInfo: [NSLocalizedDescriptionKey: message])
         logManager.log(category: category, dso: dso, message, error)
     }
 
