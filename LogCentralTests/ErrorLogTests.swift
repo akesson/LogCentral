@@ -44,7 +44,7 @@ class ErrorLogTests: XCTestCase {
     }
     
     func testNilLog() {
-        log.error(in: .view, nil); let line = #line
-        XCTAssertEqual(errorLogger.last, "[error] ErrorLogTests:\(line) The operation couldn’t be completed. (error object was nil)")
+        log.error(in: .view, nil)
+        XCTAssertEqual(errorLogger.last, "[error - view] The operation couldn’t be completed. (error object was nil)")
     }
 }

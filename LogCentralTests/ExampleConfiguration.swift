@@ -12,10 +12,14 @@ import Foundation
 enum Categories: Int, CategorySpec {
     case view, model
     
+    public var name: String {
+        return "\(self)"
+    }
+
     static let asArray:[Categories] = [.view, .model]
 }
 
-let crashLogger = LogWriter(levels: [.info], messageWriter: { (msg, lvl) in
+let crashLogger = LogWriter(levels: [.info], messageWriter: { log in
     //log messages here
 }) { (err) in
     //log handled error objects here

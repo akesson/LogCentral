@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias LogMessageWriter = (_ message: String, _ level: LogLevel) -> Void
+public typealias LogMessageWriter = (_ log: Log) -> Void
 public typealias LogErrorObjectWriter = (_ error: Error) -> Void
 
 public protocol LoggerSpec {

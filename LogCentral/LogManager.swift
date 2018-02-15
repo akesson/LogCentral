@@ -48,7 +48,7 @@ struct LogManager<T: CategorySpec> {
     
     //log when error object = nil
     func nilError(category: T, origin: Log.Origin) {
-        let message = origin.logPrefix + " The operation couldn’t be completed. (error object was nil)"
+        let message = "The operation couldn’t be completed. (error object was nil)"
         let log = Log(origin, category, .error, message)
         self.log(log)
     }
@@ -67,7 +67,7 @@ struct LogManager<T: CategorySpec> {
     
     private func toLoggers(_ log: Log) {
         LogCentral.loggers.filter { $0.levels.contains(log.level) }.forEach { (logger) in
-            logger.messageWriter(log.message, log.level)
+            logger.messageWriter(log)
         }
     }
     

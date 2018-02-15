@@ -19,6 +19,10 @@ public enum MVVMS: Int, CategorySpec {
     /// For logging made in the service (in MVVMS)
     case service
     
+    public var name: String {
+        return "\(self)"
+    }
+
     public static let asArray:[MVVMS] = [.view, .viewModel, .model, .service]
 }
 
@@ -30,6 +34,10 @@ public enum MVVM: Int, CategorySpec {
     /// For logging made in the model (in MVVM)
     case model
     
+    public var name: String {
+        return "\(self)"
+    }
+
     public static let asArray:[MVVM] = [.view, .viewModel, .model]
 }
 
@@ -44,6 +52,10 @@ public enum MVCS: Int, CategorySpec {
     /// For logging made in the service (in MVCS)
     case service
     
+    public var name: String {
+        return "\(self)"
+    }
+
     public static let asArray:[MVCS] = [.view, .model, .controller, .service]
     
 }
@@ -56,5 +68,9 @@ public enum MVC: Int, CategorySpec {
     /// For logging made in the controller (in MVC)
     case controller
     
+    public var name: String {
+        return "\(self)"
+    }
+
     public static let asArray:[MVC] = [.view, .model, .controller]
 }

@@ -17,18 +17,18 @@ private extension String {
     }
 }
 
-struct Log {
-    let origin: Origin
-    let message: String
-    let category: IntConvertible
-    let level: LogLevel
+public struct Log {
+    public let origin: Origin
+    public let message: String
+    public let category: IntConvertible
+    public let level: LogLevel
     
-    var consoleFormattedMessage: String {
+    public var consoleFormattedMessage: String {
         return "\(origin.logPrefix) \(message)"
     }
     
-    var formattedMessage: String {
-        return "[\(level)] \(origin.logPrefix)"
+    public var formattedMessage: String {
+        return "[\(level)] \(origin.logPrefix) \(message)"
     }
     
     init(_ origin: Log.Origin, _ category: IntConvertible, _ level: LogLevel, _ message: String) {
@@ -40,11 +40,11 @@ struct Log {
 }
 
 extension Log {
-    struct Origin {
+    public struct Origin {
         let dso: UnsafeRawPointer?
-        let file: String
-        let line: Int
-        let function: String
+        public let file: String
+        public let line: Int
+        public let function: String
         
         ///format: "filename:line"
         let logPrefix: String
@@ -62,5 +62,11 @@ extension Log {
                 logPrefix = "\(function):\(line)"
             }
         }
+    }
+}
+
+extension Log: CustomStringConvertible {
+    public var description: String {
+        return formattedMessage
     }
 }
