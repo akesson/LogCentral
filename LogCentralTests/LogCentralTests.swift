@@ -52,7 +52,7 @@ class LogCentralTests: XCTestCase {
         }
     }
     
-    func testError() {
+    func testActivityError() {
         log.error(in: .model, "TEST WRAPPED")
         
         var caught = false
@@ -120,6 +120,18 @@ class LogCentralTests: XCTestCase {
         XCTAssertEqual(infoAndDebugLogger.last, "[debug] second log")
     }
     
+    func testErrorLog() {
+        loggers = [errorLogger]
+        log.error(in: .view, TestError.test)
+        XCTAssertEqual(errorLogger.last, "The operation couldn’t be completed. (LogCentralTests.TestError error 0.)")
+    }
+    
+    func testNSErrorLog() {
+        loggers = [errorLogger]
+        log.error(in: .view, NSError(domain: "", code: 0, userInfo: nil))
+        XCTAssertEqual(errorLogger.last, "The operation couldn’t be completed. ( error 0.)")
+    }
+
     func throwser() throws {
         throw TestError.test
     }
