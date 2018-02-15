@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AFA8B2042035A9630020C2FC /* ExampleLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */; };
+		AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2052035AA230020C2FC /* TestLogger.swift */; };
 		C382E0911E0075C50070124D /* LoggerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LoggerSpec.swift */; };
 		C3C3B66A1DFFE755000962E0 /* ExampleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */; };
 		C3C3B66C1DFFFAC3000962E0 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLogWriter.swift; sourceTree = "<group>"; };
+		AFA8B2052035AA230020C2FC /* TestLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogger.swift; sourceTree = "<group>"; };
 		AFE7A3F22033393600548594 /* LogCentral.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = LogCentral.podspec; sourceTree = "<group>"; };
 		AFECF28E203478C30067B264 /* ConsoleMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConsoleMenu.png; sourceTree = "<group>"; };
 		C382E0901E0075C50070124D /* LoggerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerSpec.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				C3CCB90F1DF33C7F0072C7C5 /* ExampleConfiguration.swift */,
 				C3E3DD4C1DF3088200D7EB5F /* Info.plist */,
 				C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */,
+				AFA8B2052035AA230020C2FC /* TestLogger.swift */,
 			);
 			path = LogCentralTests;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				C3EE9D6C1DFF427A00724E5B /* ExampleConfiguration.swift in Sources */,
 				C3E3DD4B1DF3088200D7EB5F /* LogCentralTests.swift in Sources */,
 				C3C3B66A1DFFE755000962E0 /* ExampleCategories.swift in Sources */,
+				AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
