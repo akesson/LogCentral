@@ -10,9 +10,12 @@ import Foundation
 import os.log
 import os.activity
 
-public protocol CategorySpec {
+
+public protocol IntConvertible {
     var rawValue: Int { get }
-    
+}
+
+public protocol CategorySpec: IntConvertible {
     static var asArray: [Self] { get }
 }
 

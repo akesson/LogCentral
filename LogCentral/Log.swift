@@ -20,12 +20,14 @@ private extension String {
 struct Log {
     let origin: Origin
     let message: String
-    let category: Int
+    let category: IntConvertible
     let level: LogLevel
     
-    var logPrefix: String = ""
+    var formattedMessage: String {
+        return "[\(level)] \(origin.logPrefix)"
+    }
     
-    init(_ origin: Log.Origin, _ category: Int, _ level: LogLevel, _ message: String) {
+    init(_ origin: Log.Origin, _ category: IntConvertible, _ level: LogLevel, _ message: String) {
         self.origin = origin
         self.category = category
         self.message = message
@@ -40,6 +42,7 @@ extension Log {
         let line: Int
         let function: String
         
+        ///format: "filename:line"
         let logPrefix: String
         
         init(_ dso: UnsafeRawPointer?, _ file: String, _ line: Int, _ function: String) {
