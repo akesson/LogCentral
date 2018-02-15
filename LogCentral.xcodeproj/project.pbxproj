@@ -11,6 +11,7 @@
 		AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2052035AA230020C2FC /* TestLogger.swift */; };
 		AFA8B2082035AE800020C2FC /* ActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2072035AE800020C2FC /* ActivityTests.swift */; };
 		AFE89A972035CA0B000B9D4C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE89A962035CA0B000B9D4C /* Log.swift */; };
+		AFE89A992035E68C000B9D4C /* ErrorLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */; };
 		C382E0911E0075C50070124D /* LoggerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LoggerSpec.swift */; };
 		C3C3B66A1DFFE755000962E0 /* ExampleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */; };
 		C3C3B66C1DFFFAC3000962E0 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */; };
@@ -40,6 +41,7 @@
 		AFA8B2072035AE800020C2FC /* ActivityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTests.swift; sourceTree = "<group>"; };
 		AFE7A3F22033393600548594 /* LogCentral.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = LogCentral.podspec; sourceTree = "<group>"; };
 		AFE89A962035CA0B000B9D4C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogTests.swift; sourceTree = "<group>"; };
 		AFECF28E203478C30067B264 /* ConsoleMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConsoleMenu.png; sourceTree = "<group>"; };
 		C382E0901E0075C50070124D /* LoggerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerSpec.swift; sourceTree = "<group>"; };
 		C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCategories.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */,
 				AFA8B2052035AA230020C2FC /* TestLogger.swift */,
 				AFA8B2072035AE800020C2FC /* ActivityTests.swift */,
+				AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */,
 			);
 			path = LogCentralTests;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				C3E3DD4B1DF3088200D7EB5F /* LogCentralTests.swift in Sources */,
 				C3C3B66A1DFFE755000962E0 /* ExampleCategories.swift in Sources */,
 				AFA8B2082035AE800020C2FC /* ActivityTests.swift in Sources */,
+				AFE89A992035E68C000B9D4C /* ErrorLogTests.swift in Sources */,
 				AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
