@@ -37,7 +37,7 @@ struct LogManager<T: CategorySpec> {
     }
 
     //log errors
-    func log(category: T, dso: UnsafeRawPointer?, _ message: String, _ error: NSError) {
+    func log(category: T, dso: UnsafeRawPointer?, _ message: String, _ error: Error) {
         toConsole(message, category: category, dso: dso, level: .error)
         toLoggers(message, level: .error)
         LogCentral.loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
