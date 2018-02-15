@@ -46,16 +46,20 @@ public class LogCentral3Lvl<T: CategorySpec> {
                            line:Int = #line,
                            function:String = #function,
                            _ message: String) {
-        logManager.log(category: category, dso: dso, level: .info, message)
+        
+        let origin = Log.Origin(dso, file, line, function)
+        logManager.log(category: category, origin: origin, level: .info, message)
     }
-    
+
     public final func debug(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
                             file:String = #file,
                             line:Int = #line,
                             function:String = #function,
                             _ message: String) {
-        logManager.log(category: category, dso: dso, level: .debug, message)
+
+        let origin = Log.Origin(dso, file, line, function)
+        logManager.log(category: category, origin: origin, level: .debug, message)
     }
 
     // MARK: - Error logging
@@ -66,13 +70,16 @@ public class LogCentral3Lvl<T: CategorySpec> {
                                line: Int = #line,
                                function: String = #function,
                                _ message: M?) where M: CustomStringConvertible {
+
+        let origin = Log.Origin(dso, file, line, function)
+
         if let message = message {
             let error = NSError(domain: logManager.subsystem,
                                 code: 0,
                                 userInfo: [NSLocalizedDescriptionKey: message.description])
-            logManager.log(category: category, dso: dso, message.description, error)
+            logManager.log(category: category, origin: origin, message.description, error)
         } else {
-            nilError(category: category, dso: dso, file: file, line: line)
+            nilError(category: category, origin: origin, file: file, line: line)
         }
     }
 
@@ -83,14 +90,16 @@ public class LogCentral3Lvl<T: CategorySpec> {
                             function: String = #function,
                             _ object: Any?) {
         
+        let origin = Log.Origin(dso, file, line, function)
+
         if let object = object {
             let message = String(reflecting: object)
             let error = NSError(domain: logManager.subsystem,
                                 code: 0,
                                 userInfo: [NSLocalizedDescriptionKey: message])
-            logManager.log(category: category, dso: dso, String(reflecting: message), error)
+            logManager.log(category: category, origin: origin, String(reflecting: message), error)
         } else {
-            nilError(category: category, dso: dso, file: file, line: line)
+            nilError(category: category, origin: origin, file: file, line: line)
         }
     }
 
@@ -101,11 +110,13 @@ public class LogCentral3Lvl<T: CategorySpec> {
                             function:String = #function,
                             _ error: NSError?) {
         
+        let origin = Log.Origin(dso, file, line, function)
+        
         if let error = error {
             let message = error.localizedDescription
-            logManager.log(category: category, dso: dso, message, error)
+            logManager.log(category: category, origin: origin, message, error)
         } else {
-            nilError(category: category, dso: dso, file: file, line: line)
+            nilError(category: category, origin: origin, file: file, line: line)
         }
     }
 
@@ -116,17 +127,19 @@ public class LogCentral3Lvl<T: CategorySpec> {
                                function:String = #function,
                                _ error: E?) where E: Error {
         
+        let origin = Log.Origin(dso, file, line, function)
+
         if let error = error {
             let message = error.localizedDescription
-            logManager.log(category: category, dso: dso, message, error)
+            logManager.log(category: category, origin: origin, message, error)
         } else {
-            nilError(category: category, dso: dso, file: file, line: line)
+            nilError(category: category, origin: origin, file: file, line: line)
         }
     }
 
-    private final func nilError(category: T, dso: UnsafeRawPointer?, file: String, line: Int) {
-        let message = "TBD"
-        logManager.log(category: category, dso: dso, level: .error, message)
+    private final func nilError(category: T, origin: Log.Origin, file: String, line: Int) {
+        let message = ""
+        logManager.log(category: category, origin: origin, level: .error, message)
     }
     
     // MARK: - Activity logging
@@ -138,13 +151,10 @@ public class LogCentral3Lvl<T: CategorySpec> {
      if any.
      */
     public final func activity<T>(dso: UnsafeRawPointer? = #dsohandle,
-                                  file:String = #file,
-                                  line:Int = #line,
-                                  function:String = #function,
                                   _ description: StaticString,
                                   _ body: () throws -> T) rethrows -> T {
         
-        return try logManager.activity(dso: dso, description, body)
+        return try logManager.activity(dso, description, body)
     }
     
     /**
@@ -154,13 +164,10 @@ public class LogCentral3Lvl<T: CategorySpec> {
      Starts a new top level activity in the console.
      */
     public final func rootActivity<T>(dso: UnsafeRawPointer? = #dsohandle,
-                                      file:String = #file,
-                                      line:Int = #line,
-                                      function:String = #function,
                                       _ description: StaticString,
                                       _ body: () throws -> T) rethrows -> T {
         
-        return try logManager.activity(dso: dso, description, body)
+        return try logManager.activity(dso, description, body)
     }
 }
 
@@ -169,17 +176,25 @@ public class LogCentral4Lvl<T: CategorySpec>: LogCentral3Lvl<T> {
     ///Default level is for messages about things that might cause a failure
     public final func `default`(in logSpec: T,
                                 dso: UnsafeRawPointer? = #dsohandle,
+                                file:String = #file,
+                                line:Int = #line,
+                                function:String = #function,
                                 _ message: String) {
         
-        logManager.log(category: logSpec, dso: dso, level: .default, message)
+        let origin = Log.Origin(dso, file, line, function)
+        logManager.log(category: logSpec, origin: origin, level: .default, message)
     }
 }
 /// A LogCentral with the log levels: debug, error, info, default, fault
 public class LogCentral5Lvl<T: CategorySpec>: LogCentral4Lvl<T> {
     public final func fault(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
+                            file:String = #file,
+                            line:Int = #line,
+                            function:String = #function,
                             _ message: String) {
         
-        logManager.log(category: category, dso: dso, level: .fault, message)
+        let origin = Log.Origin(dso, file, line, function)
+        logManager.log(category: category, origin: origin, level: .fault, message)
     }
 }
