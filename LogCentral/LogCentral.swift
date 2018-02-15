@@ -13,6 +13,7 @@ import os.activity
 
 public protocol IntConvertible {
     var rawValue: Int { get }
+    var name: String { get }
 }
 
 public protocol CategorySpec: IntConvertible {

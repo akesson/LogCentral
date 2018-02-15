@@ -53,10 +53,10 @@ class LogCentralTests: XCTestCase {
         LogCentral.loggers = [testLogger]
         
         log.info(in: .view, "first log")
-        XCTAssertEqual(testLogger.last, "[info] first log")
+        XCTAssertEqual(testLogger.last, "[info - view] first log")
         
         log.debug(in: .view, "should not appear in testlogger")
-        XCTAssertEqual(testLogger.last, "[info] first log")
+        XCTAssertEqual(testLogger.last, "[info - view] first log")
     }
 
     func testTwoCustomLoggers() {
@@ -67,12 +67,12 @@ class LogCentralTests: XCTestCase {
         LogCentral.loggers = [infoLogger, debugLogger]
         
         log.info(in: .view, "first log")
-        XCTAssertEqual(infoLogger.last, "[info] first log")
+        XCTAssertEqual(infoLogger.last, "[info - view] first log")
         XCTAssertEqual(debugLogger.last, "Nothing logged")
 
         log.debug(in: .view, "second log")
-        XCTAssertEqual(infoLogger.last, "[info] first log")
-        XCTAssertEqual(debugLogger.last, "[debug] second log")
+        XCTAssertEqual(infoLogger.last, "[info - view] first log")
+        XCTAssertEqual(debugLogger.last, "[debug - view] second log")
     }
 
     func testOneDualLevelLogger() {
@@ -84,9 +84,9 @@ class LogCentralTests: XCTestCase {
         LogCentral.loggers = [infoAndDebugLogger]
         
         log.info(in: .view, "first log")
-        XCTAssertEqual(infoAndDebugLogger.last, "[info] first log")
+        XCTAssertEqual(infoAndDebugLogger.last, "[info - view] first log")
         
         log.debug(in: .view, "second log")
-        XCTAssertEqual(infoAndDebugLogger.last, "[debug] second log")
+        XCTAssertEqual(infoAndDebugLogger.last, "[debug - view] second log")
     }
 }

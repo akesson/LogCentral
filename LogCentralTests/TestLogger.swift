@@ -10,18 +10,18 @@ import Foundation
 import LogCentral
 
 class TestLogger: LoggerSpec {
-    var messageWriter: LogMessageWriter = { _, _ in }
+    var messageWriter: LogMessageWriter = { _ in }
     var errorObjectWriter: LogErrorObjectWriter?
     let levels: [LogLevel]
     
-    var lastLog: (level: LogLevel, message: String)?
+    var lastLog: Log?
     var lastError: Error?
     
     var last: String {
         if let error = lastError {
             return error.localizedDescription
-        } else if let log = lastLog {
-            return "[\(log.level)] \(log.message)"
+        } else if let log = lastLog { 
+            return "[\(log.level) - \(log.category.name)] \(log.message)"
         } else {
             return "Nothing logged"
         }
@@ -33,8 +33,8 @@ class TestLogger: LoggerSpec {
             self.lastLog = nil
             self.lastError = error
         }
-        messageWriter = { message, level in
-            self.lastLog = (level, message)
+        messageWriter = { log in
+            self.lastLog = log
             self.lastError = nil
         }
     }
