@@ -18,7 +18,7 @@ struct LogManager<T: CategorySpec> {
         self.osLoggers = OsLoggers(categories, subsystem: subsystem)
     }
 
-    func activity<T>(dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
+    func activity<T>(_ dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
         
         var scope = Activity(description, dso: dso).enter()
         defer {
@@ -27,7 +27,7 @@ struct LogManager<T: CategorySpec> {
         return try body()
     }
 
-    func rootActivity<T>(dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
+    func rootActivity<T>(_ dso: UnsafeRawPointer?, _ description: StaticString, _ body: () throws -> T) rethrows -> T {
         
         var scope = Activity(description, dso: dso, options: .detached).enter()
         defer {
@@ -37,8 +37,8 @@ struct LogManager<T: CategorySpec> {
     }
 
     //log errors
-    func log(category: T, dso: UnsafeRawPointer?, _ message: String, _ error: Error) {
-        toConsole(message, category: category, dso: dso, level: .error)
+    func log(category: T, origin: Log.Origin, _ message: String, _ error: Error) {
+        toConsole(message, category: category, origin: origin, level: .error)
         toLoggers(message, level: .error)
         LogCentral.loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
             logger.errorObjectWriter?(error)
@@ -46,8 +46,8 @@ struct LogManager<T: CategorySpec> {
     }
     
     //log messages
-    func log(category: T, dso: UnsafeRawPointer?, level: LogLevel, _ message: String) {
-        toConsole(message, category: category, dso: dso, level: level)
+    func log(category: T, origin: Log.Origin, level: LogLevel, _ message: String) {
+        toConsole(message, category: category, origin: origin, level: level)
         toLoggers(message, level: level)
     }
     
@@ -57,9 +57,9 @@ struct LogManager<T: CategorySpec> {
         }
     }
     
-    private func toConsole(_ message: String, category: T, dso: UnsafeRawPointer?, level lvl: LogLevel) {
+    private func toConsole(_ message: String, category: T, origin: Log.Origin, level lvl: LogLevel) {
         if #available(iOS 10.0, *) {
-            os_log("%@", dso: dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, message)
+            os_log("%@", dso: origin.dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, message)
         } else {
             print(message)
         }
