@@ -1,5 +1,5 @@
 //
-//  Example.swift
+//  ExampleConfiguration.swift
 //  LogCentral
 //
 //  Created by Henrik Akesson on 3/12/16.
