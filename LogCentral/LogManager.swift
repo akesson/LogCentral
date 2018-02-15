@@ -11,8 +11,10 @@ import os.log
 
 struct LogManager<T: CategorySpec> {
     private let osLoggers: OsLoggers
+    let subsystem: String
     
     init<T: CategorySpec>(subsystem: String, categories: [T]) {
+        self.subsystem = subsystem
         self.osLoggers = OsLoggers(categories, subsystem: subsystem)
     }
 
