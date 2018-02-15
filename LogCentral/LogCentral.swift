@@ -79,7 +79,7 @@ public class LogCentral3Lvl<T: CategorySpec> {
                                 userInfo: [NSLocalizedDescriptionKey: message.description])
             logManager.log(category: category, origin: origin, message.description, error)
         } else {
-            nilError(category: category, origin: origin, file: file, line: line)
+            logManager.nilError(category: category, origin: origin)
         }
     }
 
@@ -99,7 +99,7 @@ public class LogCentral3Lvl<T: CategorySpec> {
                                 userInfo: [NSLocalizedDescriptionKey: message])
             logManager.log(category: category, origin: origin, String(reflecting: message), error)
         } else {
-            nilError(category: category, origin: origin, file: file, line: line)
+            logManager.nilError(category: category, origin: origin)
         }
     }
 
@@ -116,7 +116,7 @@ public class LogCentral3Lvl<T: CategorySpec> {
             let message = error.localizedDescription
             logManager.log(category: category, origin: origin, message, error)
         } else {
-            nilError(category: category, origin: origin, file: file, line: line)
+            logManager.nilError(category: category, origin: origin)
         }
     }
 
@@ -133,13 +133,8 @@ public class LogCentral3Lvl<T: CategorySpec> {
             let message = error.localizedDescription
             logManager.log(category: category, origin: origin, message, error)
         } else {
-            nilError(category: category, origin: origin, file: file, line: line)
+            logManager.nilError(category: category, origin: origin)
         }
-    }
-
-    private final func nilError(category: T, origin: Log.Origin, file: String, line: Int) {
-        let message = ""
-        logManager.log(category: category, origin: origin, level: .error, message)
     }
     
     // MARK: - Activity logging
