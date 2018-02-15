@@ -122,4 +122,10 @@ class LogCentralTests: XCTestCase {
         log.error(in: .view, NSError(domain: "", code: 0, userInfo: nil))
         XCTAssertEqual(errorLogger.last, "The operation couldn’t be completed. ( error 0.)")
     }
+    
+    func testNilLog() {
+        loggers = [errorLogger]
+        log.error(in: .view, nil)
+        XCTAssertEqual(errorLogger.last, "[error] LogCentralTests:128 The operation couldn’t be completed. (error object was nil)")
+    }
 }

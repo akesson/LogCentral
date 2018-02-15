@@ -30,9 +30,6 @@ struct Log {
         self.category = category
         self.message = message
         self.level = level
-        
-        let name = String(origin.file.split(separator: "/").last) ?? origin.function
-        logPrefix = "[\(name):\(origin.line)]"
     }
 }
 
@@ -43,11 +40,20 @@ extension Log {
         let line: Int
         let function: String
         
+        let logPrefix: String
+        
         init(_ dso: UnsafeRawPointer?, _ file: String, _ line: Int, _ function: String) {
             self.dso = dso
             self.file = file
             self.line = line
             self.function = function
+            
+            if let fileNameAndEnding = file.split(separator: "/").last {
+                let fileName = fileNameAndEnding.replacingOccurrences(of: ".swift", with: "")
+                logPrefix = "\(fileName):\(line)"
+            } else {
+                logPrefix = "\(function):\(line)"
+            }
         }
     }
 }

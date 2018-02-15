@@ -45,6 +45,12 @@ struct LogManager<T: CategorySpec> {
         }
     }
     
+    //log when error object = nil
+    func nilError(category: T, origin: Log.Origin) {
+        let message = origin.logPrefix + " The operation couldn’t be completed. (error object was nil)"
+        self.log(category: category, origin: origin, level: .error, message)
+    }
+    
     //log messages
     func log(category: T, origin: Log.Origin, level: LogLevel, _ message: String) {
         toConsole(message, category: category, origin: origin, level: level)
