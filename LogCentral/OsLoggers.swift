@@ -23,7 +23,7 @@ struct OsLoggers {
         self.osLoggers = osLoggers
     }
     
-    func osLog<T: CategorySpec>(for log: T) -> OSLog {
+    func osLog(for log: IntConvertible) -> OSLog {
         assert(osLoggers.count > log.rawValue, "Please configure the loggers before using them")
         return osLoggers[log.rawValue]
     }

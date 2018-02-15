@@ -38,8 +38,9 @@ struct LogManager<T: CategorySpec> {
 
     //log errors
     func log(category: T, origin: Log.Origin, _ message: String, _ error: Error) {
-        toConsole(message, category: category, origin: origin, level: .error)
-        toLoggers(message, level: .error)
+        let log = Log(origin, category, .error, message)
+        toConsole(log)
+        toLoggers(log)
         LogCentral.loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
             logger.errorObjectWriter?(error)
         }
@@ -48,26 +49,33 @@ struct LogManager<T: CategorySpec> {
     //log when error object = nil
     func nilError(category: T, origin: Log.Origin) {
         let message = origin.logPrefix + " The operation couldn’t be completed. (error object was nil)"
-        self.log(category: category, origin: origin, level: .error, message)
+        let log = Log(origin, category, .error, message)
+        self.log(log)
     }
     
     //log messages
+    
     func log(category: T, origin: Log.Origin, level: LogLevel, _ message: String) {
-        toConsole(message, category: category, origin: origin, level: level)
-        toLoggers(message, level: level)
+        let log = Log(origin, category, level, message)
+        self.log(log)
     }
     
-    private func toLoggers(_ message: String, level lvl: LogLevel) {
-        LogCentral.loggers.filter { $0.levels.contains(lvl) }.forEach { (logger) in
-            logger.messageWriter(message, lvl)
+    func log(_ log: Log) {
+        toConsole(log)
+        toLoggers(log)
+    }
+    
+    private func toLoggers(_ log: Log) {
+        LogCentral.loggers.filter { $0.levels.contains(log.level) }.forEach { (logger) in
+            logger.messageWriter(log.message, log.level)
         }
     }
     
-    private func toConsole(_ message: String, category: T, origin: Log.Origin, level lvl: LogLevel) {
+    private func toConsole(_ log: Log) {
         if #available(iOS 10.0, *) {
-            os_log("%@", dso: origin.dso, log: osLoggers.osLog(for: category), type: lvl.osLogType, message)
+            os_log("%@", dso: log.origin.dso, log: osLoggers.osLog(for: log.category), type: log.level.osLogType, log.consoleFormattedMessage)
         } else {
-            print(message)
+            print(log.message)
         }
     }
 }
