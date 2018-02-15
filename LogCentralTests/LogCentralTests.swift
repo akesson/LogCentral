@@ -26,20 +26,6 @@ class LogCentralTests: XCTestCase {
         debugLogger = TestLogger([.debug])
     }
     
-    func testActivity() {
-        let myActivity = Activity("MY_ACTIVITY", parent: .none)
-        myActivity.active {
-            log.error(in: .model, "Howdy \(3+2)")
-        }
-
-        
-        let mySecondActivity = Activity("SECOND_ACTIVITY")
-        var scope2 = mySecondActivity.enter()
-        
-        log.error(in: .model, "MY_ERROR")
-        scope2.leave()
-    }
-
     func testExampleLog() {
         log.error(in: .model, "TEST WRAPPED")
 
@@ -50,28 +36,6 @@ class LogCentralTests: XCTestCase {
                 log.debug(in: .view, "SOME ERROR WRAPPED 2")
             })
         }
-    }
-    
-    func testActivityError() {
-        log.error(in: .model, "TEST WRAPPED")
-        
-        var caught = false
-        do {
-            try log.rootActivity("MY_ACTIVITY_WRAPPED") {
-                log.info(in: .view, "SOME ERROR WRAPPED")
-                
-                log.info(in: .view, "SOME ERROR WRAPPED")
-                
-                try throwser()
-                
-            }
-        } catch TestError.test {
-            caught = true
-        } catch {
-            
-        }
-        
-        XCTAssert(caught)
     }
     
     func testOneCustomLogger() {
@@ -130,9 +94,5 @@ class LogCentralTests: XCTestCase {
         loggers = [errorLogger]
         log.error(in: .view, NSError(domain: "", code: 0, userInfo: nil))
         XCTAssertEqual(errorLogger.last, "The operation couldn’t be completed. ( error 0.)")
-    }
-
-    func throwser() throws {
-        throw TestError.test
     }
 }
