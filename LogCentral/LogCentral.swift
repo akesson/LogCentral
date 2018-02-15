@@ -57,40 +57,80 @@ public class LogCentral3Lvl<T: CategorySpec> {
                             _ message: String) {
         logManager.log(category: category, dso: dso, level: .debug, message)
     }
+
+    // MARK: - Error logging
     
+    public final func error<M>(in category: T,
+                               dso: UnsafeRawPointer? = #dsohandle,
+                               file: String = #file,
+                               line: Int = #line,
+                               function: String = #function,
+                               _ message: M?) where M: CustomStringConvertible {
+        if let message = message {
+            let error = NSError(domain: logManager.subsystem,
+                                code: 0,
+                                userInfo: [NSLocalizedDescriptionKey: message.description])
+            logManager.log(category: category, dso: dso, message.description, error)
+        } else {
+            nilError(category: category, dso: dso, file: file, line: line)
+        }
+    }
+
+    public final func error(in category: T,
+                            dso: UnsafeRawPointer? = #dsohandle,
+                            file: String = #file,
+                            line: Int = #line,
+                            function: String = #function,
+                            _ object: Any?) {
+        
+        if let object = object {
+            let message = String(reflecting: object)
+            let error = NSError(domain: logManager.subsystem,
+                                code: 0,
+                                userInfo: [NSLocalizedDescriptionKey: message])
+            logManager.log(category: category, dso: dso, String(reflecting: message), error)
+        } else {
+            nilError(category: category, dso: dso, file: file, line: line)
+        }
+    }
+
     public final func error(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
                             file:String = #file,
                             line:Int = #line,
                             function:String = #function,
-                            _ message: String) {
-        let error = NSError(domain: logManager.subsystem,
-                            code: 0,
-                            userInfo: [NSLocalizedDescriptionKey: message])
-        logManager.log(category: category, dso: dso, message, error)
-    }
-
-    public final func error<E: Error>(in category: T,
-                                      dso: UnsafeRawPointer? = #dsohandle,
-                                      file:String = #file,
-                                      line:Int = #line,
-                                      function:String = #function,
-                                      _ message: String,
-                                      _ error: E) {
+                            _ error: NSError?) {
         
-        logManager.log(category: category, dso: dso, message, error)
+        if let error = error {
+            let message = error.localizedDescription
+            logManager.log(category: category, dso: dso, message, error)
+        } else {
+            nilError(category: category, dso: dso, file: file, line: line)
+        }
     }
 
-    public final func error<E: Error>(in category: T,
-                                      dso: UnsafeRawPointer? = #dsohandle,
-                                      file:String = #file,
-                                      line:Int = #line,
-                                      function:String = #function,
-                                      _ error: E) {
-        let message = error.localizedDescription
-         logManager.log(category: category, dso: dso, message, error)
+    public final func error<E>(in category: T,
+                               dso: UnsafeRawPointer? = #dsohandle,
+                               file:String = #file,
+                               line:Int = #line,
+                               function:String = #function,
+                               _ error: E?) where E: Error {
+        
+        if let error = error {
+            let message = error.localizedDescription
+            logManager.log(category: category, dso: dso, message, error)
+        } else {
+            nilError(category: category, dso: dso, file: file, line: line)
+        }
     }
 
+    private final func nilError(category: T, dso: UnsafeRawPointer?, file: String, line: Int) {
+        let message = "TBD"
+        logManager.log(category: category, dso: dso, level: .error, message)
+    }
+    
+    // MARK: - Activity logging
+    
     /**
      An internal activity, typically used for splitting the work into
      logical segments like "searching database", "filtering results",
