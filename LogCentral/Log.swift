@@ -23,6 +23,10 @@ struct Log {
     let category: IntConvertible
     let level: LogLevel
     
+    var consoleFormattedMessage: String {
+        return "\(origin.logPrefix) \(message)"
+    }
+    
     var formattedMessage: String {
         return "[\(level)] \(origin.logPrefix)"
     }
