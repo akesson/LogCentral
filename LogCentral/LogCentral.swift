@@ -42,19 +42,34 @@ public class LogCentral3Lvl<T: CategorySpec> {
     public init(subsystem: String) {
         logManager = LogManager(subsystem: subsystem, categories: T.asArray)
     }
+    
+    // MARK: - Info level logging
 
     ///Info level is for messages about things that will be helpful for troubleshooting an error
+    public final func info<M>(in category: T,
+                              dso: UnsafeRawPointer? = #dsohandle,
+                              file:String = #file,
+                              line:Int = #line,
+                              function:String = #function,
+                              _ message: M) where M: CustomStringConvertible {
+        
+        let origin = Log.Origin(dso, file, line, function)
+        logManager.log(category: category, origin: origin, level: .info, message.description)
+    }
+
     public final func info(in category: T,
                            dso: UnsafeRawPointer? = #dsohandle,
                            file:String = #file,
                            line:Int = #line,
                            function:String = #function,
-                           _ message: String) {
-        
+                           _ message: Any) {
+
         let origin = Log.Origin(dso, file, line, function)
-        logManager.log(category: category, origin: origin, level: .info, message)
+        logManager.log(category: category, origin: origin, level: .info, String(reflecting: message))
     }
 
+    // MARK: - Debug level logging
+    
     public final func debug(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
                             file:String = #file,
