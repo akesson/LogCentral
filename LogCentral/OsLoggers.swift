@@ -10,7 +10,7 @@ import Foundation
 import os.log
 
 struct OsLoggers {
-    private let osLoggers:[OSLog]
+    private let osLoggers: [OSLog]
     
     init<T: CategorySpec>(_ loggers: [T], subsystem: String) {
         var osLoggers = [OSLog]()

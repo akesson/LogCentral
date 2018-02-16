@@ -1,0 +1,9 @@
+included:
+  - LogCentral
+
+excluded:
+    # Activity.swift is excluded as it comes from a GitHub Gist
+  - LogCentral/Activity.swift
+
+disabled_rules:
+  - trailing_whitespace

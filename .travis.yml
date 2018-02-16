@@ -3,10 +3,15 @@ osx_image: xcode9.2
 xcode_project: LogCentral.xcodeproj
 xcode_scheme: LogCentral
 xcode_sdk: iphonesimulator11.2
+
+before_install:
+  - brew update && brew swiftlint
+
 script:
 - xcodebuild clean build test -project LogCentral.xcodeproj -scheme LogCentral -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.2' ONLY_ACTIVE_ARCH=NO | xcpretty -c
 - carthage build --no-skip-current --platform iOS
 - carthage archive LogCentral
+
 deploy:
   provider: releases
   api_key:

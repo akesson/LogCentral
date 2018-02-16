@@ -73,7 +73,11 @@ struct LogManager<T: CategorySpec> {
     
     private func toConsole(_ log: Log) {
         if #available(iOS 10.0, *) {
-            os_log("%@", dso: log.origin.dso, log: osLoggers.osLog(for: log.category), type: log.level.osLogType, log.consoleFormattedMessage)
+            os_log("%@",
+                   dso: log.origin.dso,
+                   log: osLoggers.osLog(for: log.category),
+                   type: log.level.osLogType,
+                   log.consoleFormattedMessage)
         } else {
             print(log.message)
         }
