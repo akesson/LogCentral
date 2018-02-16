@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF49113D2036C43900E70DB1 /* InfoLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49113C2036C43900E70DB1 /* InfoLogTests.swift */; };
 		AF49113F2036D01100E70DB1 /* DebugLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49113E2036D01100E70DB1 /* DebugLogTests.swift */; };
+		AF4911412036D8E200E70DB1 /* DefaultLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */; };
 		AFA8B2042035A9630020C2FC /* ExampleLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */; };
 		AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2052035AA230020C2FC /* TestLogger.swift */; };
 		AFA8B2082035AE800020C2FC /* ActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2072035AE800020C2FC /* ActivityTests.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		AF49113C2036C43900E70DB1 /* InfoLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLogTests.swift; sourceTree = "<group>"; };
 		AF49113E2036D01100E70DB1 /* DebugLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogTests.swift; sourceTree = "<group>"; };
+		AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLogTests.swift; sourceTree = "<group>"; };
 		AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLogWriter.swift; sourceTree = "<group>"; };
 		AFA8B2052035AA230020C2FC /* TestLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogger.swift; sourceTree = "<group>"; };
 		AFA8B2072035AE800020C2FC /* ActivityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTests.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */,
 				AF49113C2036C43900E70DB1 /* InfoLogTests.swift */,
 				AF49113E2036D01100E70DB1 /* DebugLogTests.swift */,
+				AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */,
 			);
 			path = LogCentralTests;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4911412036D8E200E70DB1 /* DefaultLogTests.swift in Sources */,
 				AFA8B2042035A9630020C2FC /* ExampleLogWriter.swift in Sources */,
 				C3EE9D6C1DFF427A00724E5B /* ExampleConfiguration.swift in Sources */,
 				C3E3DD4B1DF3088200D7EB5F /* LogCentralTests.swift in Sources */,
