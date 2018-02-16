@@ -8,15 +8,6 @@
 
 import Foundation
 
-private extension String {
-    init?(_ subSequence: String.SubSequence?) {
-        guard let subSequence = subSequence else {
-            return nil
-        }
-        self.init(subSequence)
-    }
-}
-
 public struct Log {
     public let origin: Origin
     public let message: String
@@ -46,21 +37,23 @@ extension Log {
         public let line: Int
         public let function: String
         
+        public var filename: String? {
+            guard let fileNameAndEnding = file.split(separator: "/").last else {
+                return nil
+            }
+            return fileNameAndEnding.replacingOccurrences(of: ".swift", with: "")
+        }
+        
         ///format: "filename:line"
-        let logPrefix: String
+        public var logPrefix: String {
+            return "\(filename ?? file):\(line)"
+        }
         
         init(_ dso: UnsafeRawPointer?, _ file: String, _ line: Int, _ function: String) {
             self.dso = dso
             self.file = file
             self.line = line
             self.function = function
-            
-            if let fileNameAndEnding = file.split(separator: "/").last {
-                let fileName = fileNameAndEnding.replacingOccurrences(of: ".swift", with: "")
-                logPrefix = "\(fileName):\(line)"
-            } else {
-                logPrefix = "\(function):\(line)"
-            }
         }
     }
 }

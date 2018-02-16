@@ -11,6 +11,7 @@
 		AF49113F2036D01100E70DB1 /* DebugLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49113E2036D01100E70DB1 /* DebugLogTests.swift */; };
 		AF4911412036D8E200E70DB1 /* DefaultLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */; };
 		AFA228032036DA5800270C20 /* FaultLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA228022036DA5800270C20 /* FaultLogTests.swift */; };
+		AFA228052036DC1700270C20 /* LogContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA228042036DC1700270C20 /* LogContentTests.swift */; };
 		AFA8B2042035A9630020C2FC /* ExampleLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */; };
 		AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2052035AA230020C2FC /* TestLogger.swift */; };
 		AFA8B2082035AE800020C2FC /* ActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2072035AE800020C2FC /* ActivityTests.swift */; };
@@ -44,6 +45,7 @@
 		AF49113E2036D01100E70DB1 /* DebugLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogTests.swift; sourceTree = "<group>"; };
 		AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLogTests.swift; sourceTree = "<group>"; };
 		AFA228022036DA5800270C20 /* FaultLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultLogTests.swift; sourceTree = "<group>"; };
+		AFA228042036DC1700270C20 /* LogContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogContentTests.swift; sourceTree = "<group>"; };
 		AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLogWriter.swift; sourceTree = "<group>"; };
 		AFA8B2052035AA230020C2FC /* TestLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogger.swift; sourceTree = "<group>"; };
 		AFA8B2072035AE800020C2FC /* ActivityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTests.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				AF49113E2036D01100E70DB1 /* DebugLogTests.swift */,
 				AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */,
 				AFA228022036DA5800270C20 /* FaultLogTests.swift */,
+				AFA228042036DC1700270C20 /* LogContentTests.swift */,
 			);
 			path = LogCentralTests;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				AFA228032036DA5800270C20 /* FaultLogTests.swift in Sources */,
 				AFA8B2082035AE800020C2FC /* ActivityTests.swift in Sources */,
 				AFE89A992035E68C000B9D4C /* ErrorLogTests.swift in Sources */,
+				AFA228052036DC1700270C20 /* LogContentTests.swift in Sources */,
 				AF49113D2036C43900E70DB1 /* InfoLogTests.swift in Sources */,
 				AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */,
 				AF49113F2036D01100E70DB1 /* DebugLogTests.swift in Sources */,
