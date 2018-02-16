@@ -16,4 +16,3 @@ public protocol LoggerSpec {
     var messageWriter: LogMessageWriter { get }
     var errorObjectWriter: LogErrorObjectWriter? { get }
 }
-

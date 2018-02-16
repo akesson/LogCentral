@@ -10,7 +10,6 @@ import Foundation
 import os.log
 import os.activity
 
-
 public protocol IntConvertible {
     var rawValue: Int { get }
     var name: String { get }
@@ -19,7 +18,6 @@ public protocol IntConvertible {
 public protocol CategorySpec: IntConvertible {
     static var asArray: [Self] { get }
 }
-
 
 /**
  The loggers here are custom loggers that specifies
@@ -59,9 +57,9 @@ public class LogCentral3Lvl<T: CategorySpec> {
 
     public final func info(in category: T,
                            dso: UnsafeRawPointer? = #dsohandle,
-                           file:String = #file,
-                           line:Int = #line,
-                           function:String = #function,
+                           file: String = #file,
+                           line: Int = #line,
+                           function: String = #function,
                            _ message: Any) {
 
         let origin = Log.Origin(dso, file, line, function)
@@ -72,9 +70,9 @@ public class LogCentral3Lvl<T: CategorySpec> {
     
     public final func debug<M>(in category: T,
                                dso: UnsafeRawPointer? = #dsohandle,
-                               file:String = #file,
-                               line:Int = #line,
-                               function:String = #function,
+                               file: String = #file,
+                               line: Int = #line,
+                               function: String = #function,
                                _ message: M) where M: CustomStringConvertible {
         
         let origin = Log.Origin(dso, file, line, function)
@@ -83,9 +81,9 @@ public class LogCentral3Lvl<T: CategorySpec> {
     
     public final func debug(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
-                            file:String = #file,
-                            line:Int = #line,
-                            function:String = #function,
+                            file: String = #file,
+                            line: Int = #line,
+                            function: String = #function,
                             _ message: Any) {
         
         let origin = Log.Origin(dso, file, line, function)
@@ -134,9 +132,9 @@ public class LogCentral3Lvl<T: CategorySpec> {
 
     public final func error(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
-                            file:String = #file,
-                            line:Int = #line,
-                            function:String = #function,
+                            file: String = #file,
+                            line: Int = #line,
+                            function: String = #function,
                             _ error: NSError?) {
         
         let origin = Log.Origin(dso, file, line, function)
@@ -151,9 +149,9 @@ public class LogCentral3Lvl<T: CategorySpec> {
 
     public final func error<E>(in category: T,
                                dso: UnsafeRawPointer? = #dsohandle,
-                               file:String = #file,
-                               line:Int = #line,
-                               function:String = #function,
+                               file: String = #file,
+                               line: Int = #line,
+                               function: String = #function,
                                _ error: E?) where E: Error {
         
         let origin = Log.Origin(dso, file, line, function)
@@ -215,9 +213,9 @@ public class LogCentral4Lvl<T: CategorySpec>: LogCentral3Lvl<T> {
     ///Default level is for messages about things that might cause a failure
     public final func `default`(in logSpec: T,
                                 dso: UnsafeRawPointer? = #dsohandle,
-                                file:String = #file,
-                                line:Int = #line,
-                                function:String = #function,
+                                file: String = #file,
+                                line: Int = #line,
+                                function: String = #function,
                                 _ object: Any) {
         
         let origin = Log.Origin(dso, file, line, function)
@@ -231,11 +229,11 @@ public class LogCentral5Lvl<T: CategorySpec>: LogCentral4Lvl<T> {
     // MARK: - Fault level logging
 
     public final func fault<M>(in category: T,
-                            dso: UnsafeRawPointer? = #dsohandle,
-                            file:String = #file,
-                            line:Int = #line,
-                            function:String = #function,
-                            _ message: M) where M: CustomStringConvertible {
+                               dso: UnsafeRawPointer? = #dsohandle,
+                               file: String = #file,
+                               line: Int = #line,
+                               function: String = #function,
+                               _ message: M) where M: CustomStringConvertible {
         
         let origin = Log.Origin(dso, file, line, function)
         logManager.log(category: category, origin: origin, level: .fault, message.description)
@@ -243,9 +241,9 @@ public class LogCentral5Lvl<T: CategorySpec>: LogCentral4Lvl<T> {
 
     public final func fault(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
-                            file:String = #file,
-                            line:Int = #line,
-                            function:String = #function,
+                            file: String = #file,
+                            line: Int = #line,
+                            function: String = #function,
                             _ object: Any) {
         
         let origin = Log.Origin(dso, file, line, function)
