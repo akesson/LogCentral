@@ -11,41 +11,83 @@ import XCTest
 
 class ActivityTests: XCTestCase {
     
-    func testActivity() {
-        let myActivity = Activity("MY_ACTIVITY", parent: .none)
-        myActivity.active {
-            log.error(in: .model, "Howdy \(3+2)")
-        }
-        
-        
-        let mySecondActivity = Activity("SECOND_ACTIVITY")
-        var scope2 = mySecondActivity.enter()
-        
-        log.error(in: .model, "MY_ERROR")
-        scope2.leave()
+    /// THESE TESTS NEEDS TO BE MANUALLY VERIFIED IN THE CONSOLE
+    
+    var infoLogger = TestLogger([.info])
+    
+    override func setUp() {
+        infoLogger = TestLogger([.info])
+        loggers = [infoLogger]
     }
 
-    func testActivityError() {
-        log.error(in: .model, "TEST WRAPPED")
+    func testInternalActivity() {
+        let myActivity = Activity("first internal root activity", parent: .none)
+        myActivity.active {
+            log.info(in: .model, "inside first internal root activity")
+            
+            
+            let mySecondActivity = Activity("nested internal activity")
+            var scope2 = mySecondActivity.enter()
+            
+            log.info(in: .model, "inside nested internal activity")
+            scope2.leave()
+        }
+    }
+
+    func testRootAndNestedActivity() {
+        log.info(in: .model, "before root activity")
+        
+        log.rootActivity("root activity") {
+            log.info(in: .view, "inside root activity")
+            
+            log.activity("nested activity", {
+                log.info(in: .model, "inside nested activity")
+            })
+        }
+    }
+    
+    func testActivityWithReturn() {
+        XCTAssertTrue(activityWithReturn())
+    }
+
+    func activityWithReturn() -> Bool {
+        return log.activity("root activity") {
+            return true
+        }
+    }
+
+    func testDualRootActivity() {
+        log.info(in: .model, "before root activity")
+        
+        log.rootActivity("root activity") {
+            log.info(in: .view, "inside root activity")
+            
+            log.rootActivity("second root activity", {
+                log.info(in: .model, "inside second root activity")
+            })
+        }
+    }
+
+    func testRootActivityError() {
+        log.info(in: .model, "before root activity")
         
         var caught = false
         do {
-            try log.rootActivity("MY_ACTIVITY_WRAPPED") {
-                log.info(in: .view, "SOME ERROR WRAPPED")
-                
-                log.info(in: .view, "SOME ERROR WRAPPED")
+            try log.rootActivity("root activity") {
+                log.info(in: .view, "before root activity error")
                 
                 try throwser()
                 
+                log.info(in: .view, "after root activity error")
             }
         } catch TestError.test {
             caught = true
         } catch {
-            
+            XCTFail()
         }
-        
         XCTAssert(caught)
     }
+
     
     func throwser() throws {
         throw TestError.test

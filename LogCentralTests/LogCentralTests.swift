@@ -32,17 +32,6 @@ class LogCentralTests: XCTestCase {
         debugLogger = TestLogger([.debug])
     }
     
-    func testExampleLog() {
-        log.error(in: .model, "TEST WRAPPED")
-
-        log.rootActivity("MY_ACTIVITY_WRAPPED") {
-            log.info(in: .view, "SOME ERROR WRAPPED")
-            
-            log.activity("MY_ACTIVITY_WRAPPED_2", {
-                log.debug(in: .view, "SOME ERROR WRAPPED 2")
-            })
-        }
-    }
     
     func testOneCustomLogger() {
         let testLogger = TestLogger([.info])
