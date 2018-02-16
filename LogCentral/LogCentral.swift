@@ -197,18 +197,34 @@ public class LogCentral3Lvl<T: CategorySpec> {
 
 /// A LogCentral with the log levels: debug, error, info, default
 public class LogCentral4Lvl<T: CategorySpec>: LogCentral3Lvl<T> {
+    
+    // MARK: - Default level logging
+    
+    ///Default level is for messages about things that might cause a failure
+    public final func `default`<M>(in logSpec: T,
+                                   dso: UnsafeRawPointer? = #dsohandle,
+                                   file:String = #file,
+                                   line:Int = #line,
+                                   function:String = #function,
+                                   _ message: M) where M: CustomStringConvertible {
+        
+        let origin = Log.Origin(dso, file, line, function)
+        logManager.log(category: logSpec, origin: origin, level: .default, message.description)
+    }
+
     ///Default level is for messages about things that might cause a failure
     public final func `default`(in logSpec: T,
                                 dso: UnsafeRawPointer? = #dsohandle,
                                 file:String = #file,
                                 line:Int = #line,
                                 function:String = #function,
-                                _ message: String) {
+                                _ object: Any) {
         
         let origin = Log.Origin(dso, file, line, function)
-        logManager.log(category: logSpec, origin: origin, level: .default, message)
+        logManager.log(category: logSpec, origin: origin, level: .default, String(reflecting: object))
     }
 }
+
 /// A LogCentral with the log levels: debug, error, info, default, fault
 public class LogCentral5Lvl<T: CategorySpec>: LogCentral4Lvl<T> {
     public final func fault(in category: T,

@@ -25,6 +25,6 @@ let crashLogger = LogWriter(levels: [.info], messageWriter: { log in
     //log handled error objects here
 }
 
-let log = LogCentral3Lvl<Categories>(subsystem: "mobi.akesson.logcentral")
+let log = LogCentral5Lvl<Categories>(subsystem: "mobi.akesson.logcentral")
 
 
