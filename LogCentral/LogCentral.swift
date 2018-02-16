@@ -45,7 +45,7 @@ public class LogCentral3Lvl<T: CategorySpec> {
     
     // MARK: - Info level logging
 
-    ///Info level is for messages about things that will be helpful for troubleshooting an error
+    ///Info level is for messages that will be helpful for troubleshooting an error
     public final func info<M>(in category: T,
                               dso: UnsafeRawPointer? = #dsohandle,
                               file:String = #file,
@@ -227,14 +227,28 @@ public class LogCentral4Lvl<T: CategorySpec>: LogCentral3Lvl<T> {
 
 /// A LogCentral with the log levels: debug, error, info, default, fault
 public class LogCentral5Lvl<T: CategorySpec>: LogCentral4Lvl<T> {
+    
+    // MARK: - Fault level logging
+
+    public final func fault<M>(in category: T,
+                            dso: UnsafeRawPointer? = #dsohandle,
+                            file:String = #file,
+                            line:Int = #line,
+                            function:String = #function,
+                            _ message: M) where M: CustomStringConvertible {
+        
+        let origin = Log.Origin(dso, file, line, function)
+        logManager.log(category: category, origin: origin, level: .fault, message.description)
+    }
+
     public final func fault(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
                             file:String = #file,
                             line:Int = #line,
                             function:String = #function,
-                            _ message: String) {
+                            _ object: Any) {
         
         let origin = Log.Origin(dso, file, line, function)
-        logManager.log(category: category, origin: origin, level: .fault, message)
+        logManager.log(category: category, origin: origin, level: .fault, String(reflecting: object))
     }
 }
