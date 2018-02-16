@@ -180,7 +180,7 @@ public class LogCentral3Lvl<T: CategorySpec> {
         
         return try logManager.activity(dso, description, body)
     }
-    
+
     /**
      Normally a user initiated activity (button click etc.) or an
      externally triggered event typically originating from the OS
@@ -191,7 +191,7 @@ public class LogCentral3Lvl<T: CategorySpec> {
                                       _ description: StaticString,
                                       _ body: () throws -> T) rethrows -> T {
         
-        return try logManager.activity(dso, description, body)
+        return try logManager.rootActivity(dso, description, body)
     }
 }
 
