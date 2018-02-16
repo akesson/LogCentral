@@ -38,7 +38,7 @@ struct LogManager<T: CategorySpec> {
 
     //log errors
     func log(category: T, origin: Log.Origin, _ message: String, _ error: Error) {
-        let log = Log(origin, category, .error, message)
+        let log = Log(origin, subsystem, category, .error, message)
         toConsole(log)
         toLoggers(log)
         LogCentral.loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
@@ -49,14 +49,14 @@ struct LogManager<T: CategorySpec> {
     //log when error object = nil
     func nilError(category: T, origin: Log.Origin) {
         let message = "The operation couldn’t be completed. (error object was nil)"
-        let log = Log(origin, category, .error, message)
+        let log = Log(origin, subsystem, category, .error, message)
         self.log(log)
     }
     
     //log messages
     
     func log(category: T, origin: Log.Origin, level: LogLevel, _ message: String) {
-        let log = Log(origin, category, level, message)
+        let log = Log(origin, subsystem, category, level, message)
         self.log(log)
     }
     
