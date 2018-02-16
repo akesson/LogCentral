@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/akesson/LogCentral.svg?branch=master)](https://travis-ci.org/akesson/LogCentral) 
+[![Platforms](https://cocoapod-badges.herokuapp.com/p/LogCentral/badge.png)](https://cocoapods.org/)
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Pod version](https://cocoapod-badges.herokuapp.com/v/LogCentral/badge.png)](https://cocoapods.org/)
+
 # LogCentral
 A modern swift logging utility made for the real needs. 
 
