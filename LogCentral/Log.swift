@@ -13,6 +13,7 @@ public struct Log {
     public let message: String
     public let category: IntConvertible
     public let level: LogLevel
+    public let subsystem: String
     
     public var consoleFormattedMessage: String {
         return "\(origin.logPrefix) \(message)"
@@ -22,8 +23,9 @@ public struct Log {
         return "[\(level)] \(origin.logPrefix) \(message)"
     }
     
-    init(_ origin: Log.Origin, _ category: IntConvertible, _ level: LogLevel, _ message: String) {
+    init(_ origin: Log.Origin, _ subsystem: String, _ category: IntConvertible, _ level: LogLevel, _ message: String) {
         self.origin = origin
+        self.subsystem = subsystem
         self.category = category
         self.message = message
         self.level = level

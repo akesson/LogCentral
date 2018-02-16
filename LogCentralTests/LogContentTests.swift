@@ -26,6 +26,7 @@ class LogContentTests: XCTestCase {
             return
         }
 
+        XCTAssertEqual(logData.subsystem, "mobi.akesson.logcentral")
         XCTAssertEqual(logData.category.name, "view")
         XCTAssertEqual(logData.consoleFormattedMessage, "LogContentTests:22 My log")
         XCTAssertEqual(logData.description, "[info] LogContentTests:22 My log")
