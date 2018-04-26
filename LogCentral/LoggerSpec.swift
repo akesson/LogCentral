@@ -9,7 +9,7 @@
 import Foundation
 
 public typealias LogMessageWriter = (_ log: Log) -> Void
-public typealias LogErrorObjectWriter = (_ error: Error) -> Void
+public typealias LogErrorObjectWriter = (_ error: Error, _ origin: Log.Origin) -> Void
 
 public protocol LoggerSpec {
     var levels: [LogLevel] { get }

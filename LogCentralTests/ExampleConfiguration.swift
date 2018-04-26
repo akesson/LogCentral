@@ -21,7 +21,7 @@ enum Categories: Int, CategorySpec {
 
 let crashLogger = LogWriter(levels: [.info], messageWriter: { log in
     //log messages here
-}) { (err) in
+}) { (error, origin) in
     //log handled error objects here
 }
 
