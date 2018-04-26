@@ -29,7 +29,7 @@ class TestLogger: LoggerSpec {
     
     init(_ levels: [LogLevel]) {
         self.levels = levels
-        errorObjectWriter = { error in
+        errorObjectWriter = { error, origin in
             self.lastLog = nil
             self.lastError = error
         }

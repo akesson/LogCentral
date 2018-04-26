@@ -42,7 +42,7 @@ struct LogManager<T: CategorySpec> {
         toConsole(log)
         toLoggers(log)
         LogCentral.loggers.filter { $0.levels.contains(.error) }.forEach { (logger) in
-            logger.errorObjectWriter?(error)
+            logger.errorObjectWriter?(error, origin)
         }
     }
     
