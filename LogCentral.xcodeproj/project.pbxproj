@@ -12,9 +12,9 @@
 		AF4911412036D8E200E70DB1 /* DefaultLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */; };
 		AFA228032036DA5800270C20 /* FaultLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA228022036DA5800270C20 /* FaultLogTests.swift */; };
 		AFA228052036DC1700270C20 /* LogContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA228042036DC1700270C20 /* LogContentTests.swift */; };
-		AFA8B2042035A9630020C2FC /* ExampleLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */; };
 		AFA8B2062035AA230020C2FC /* TestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2052035AA230020C2FC /* TestLogger.swift */; };
 		AFA8B2082035AE800020C2FC /* ActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2072035AE800020C2FC /* ActivityTests.swift */; };
+		AFD5BECB20922BDB00310EE1 /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5BECA20922BDB00310EE1 /* LogWriter.swift */; };
 		AFE89A972035CA0B000B9D4C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE89A962035CA0B000B9D4C /* Log.swift */; };
 		AFE89A992035E68C000B9D4C /* ErrorLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */; };
 		C382E0911E0075C50070124D /* LoggerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LoggerSpec.swift */; };
@@ -46,9 +46,9 @@
 		AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLogTests.swift; sourceTree = "<group>"; };
 		AFA228022036DA5800270C20 /* FaultLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultLogTests.swift; sourceTree = "<group>"; };
 		AFA228042036DC1700270C20 /* LogContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogContentTests.swift; sourceTree = "<group>"; };
-		AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLogWriter.swift; sourceTree = "<group>"; };
 		AFA8B2052035AA230020C2FC /* TestLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLogger.swift; sourceTree = "<group>"; };
 		AFA8B2072035AE800020C2FC /* ActivityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTests.swift; sourceTree = "<group>"; };
+		AFD5BECA20922BDB00310EE1 /* LogWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWriter.swift; sourceTree = "<group>"; };
 		AFE7A3F22033393600548594 /* LogCentral.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = LogCentral.podspec; sourceTree = "<group>"; };
 		AFE89A962035CA0B000B9D4C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogTests.swift; sourceTree = "<group>"; };
@@ -130,6 +130,7 @@
 				C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */,
 				C382E0901E0075C50070124D /* LoggerSpec.swift */,
 				AFE89A962035CA0B000B9D4C /* Log.swift */,
+				AFD5BECA20922BDB00310EE1 /* LogWriter.swift */,
 			);
 			path = LogCentral;
 			sourceTree = "<group>";
@@ -138,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */,
-				AFA8B2032035A9630020C2FC /* ExampleLogWriter.swift */,
 				C3CCB90F1DF33C7F0072C7C5 /* ExampleConfiguration.swift */,
 				C3E3DD4C1DF3088200D7EB5F /* Info.plist */,
 				C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */,
@@ -285,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C3B66C1DFFFAC3000962E0 /* LogManager.swift in Sources */,
+				AFD5BECB20922BDB00310EE1 /* LogWriter.swift in Sources */,
 				C382E0911E0075C50070124D /* LoggerSpec.swift in Sources */,
 				C3CCB90E1DF3159E0072C7C5 /* LogCentral.swift in Sources */,
 				AFE89A972035CA0B000B9D4C /* Log.swift in Sources */,
@@ -299,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF4911412036D8E200E70DB1 /* DefaultLogTests.swift in Sources */,
-				AFA8B2042035A9630020C2FC /* ExampleLogWriter.swift in Sources */,
 				C3EE9D6C1DFF427A00724E5B /* ExampleConfiguration.swift in Sources */,
 				C3E3DD4B1DF3088200D7EB5F /* LogCentralTests.swift in Sources */,
 				C3C3B66A1DFFE755000962E0 /* ExampleCategories.swift in Sources */,
