@@ -89,26 +89,8 @@ public class LogCentral3Lvl<T: CategorySpec> {
         let origin = Log.Origin(dso, file, line, function)
         logManager.log(category: category, origin: origin, level: .debug, String(reflecting: message))
     }
-    // MARK: - Error logging
     
-    public final func error<M>(in category: T,
-                               dso: UnsafeRawPointer? = #dsohandle,
-                               file: String = #file,
-                               line: Int = #line,
-                               function: String = #function,
-                               _ message: M?) where M: CustomStringConvertible {
-
-        let origin = Log.Origin(dso, file, line, function)
-
-        if let message = message {
-            let error = NSError(domain: logManager.subsystem,
-                                code: 0,
-                                userInfo: [NSLocalizedDescriptionKey: message.description])
-            logManager.log(category: category, origin: origin, message.description, error)
-        } else {
-            logManager.nilError(category: category, origin: origin)
-        }
-    }
+    // MARK: - Error logging
 
     public final func error(in category: T,
                             dso: UnsafeRawPointer? = #dsohandle,
@@ -118,47 +100,28 @@ public class LogCentral3Lvl<T: CategorySpec> {
                             _ object: Any?) {
         
         let origin = Log.Origin(dso, file, line, function)
-
+        
         if let object = object {
-            let message = String(reflecting: object)
-            let error = NSError(domain: logManager.subsystem,
-                                code: 0,
-                                userInfo: [NSLocalizedDescriptionKey: message])
-            logManager.log(category: category, origin: origin, String(reflecting: message), error)
-        } else {
-            logManager.nilError(category: category, origin: origin)
-        }
-    }
+            if let error = object as? Error {
+                let message = error.localizedDescription
+                print("\(error)")
+                logManager.log(category: category, origin: origin, message, error)
+            } else if let nsError = object as? NSError {
+                let message = nsError.localizedDescription
+                logManager.log(category: category, origin: origin, message, nsError)
+            } else if let message = object as? CustomStringConvertible {
+                let error = NSError(domain: logManager.subsystem,
+                                    code: 0,
+                                    userInfo: [NSLocalizedDescriptionKey: message.description])
+                logManager.log(category: category, origin: origin, message.description, error)
 
-    public final func error(in category: T,
-                            dso: UnsafeRawPointer? = #dsohandle,
-                            file: String = #file,
-                            line: Int = #line,
-                            function: String = #function,
-                            _ error: NSError?) {
-        
-        let origin = Log.Origin(dso, file, line, function)
-        
-        if let error = error {
-            let message = error.localizedDescription
-            logManager.log(category: category, origin: origin, message, error)
-        } else {
-            logManager.nilError(category: category, origin: origin)
-        }
-    }
-
-    public final func error<E>(in category: T,
-                               dso: UnsafeRawPointer? = #dsohandle,
-                               file: String = #file,
-                               line: Int = #line,
-                               function: String = #function,
-                               _ error: E?) where E: Error {
-        
-        let origin = Log.Origin(dso, file, line, function)
-
-        if let error = error {
-            let message = error.localizedDescription
-            logManager.log(category: category, origin: origin, message, error)
+            } else {
+                let message = String(reflecting: object)
+                let error = NSError(domain: logManager.subsystem,
+                                    code: 0,
+                                    userInfo: [NSLocalizedDescriptionKey: message])
+                logManager.log(category: category, origin: origin, String(reflecting: message), error)
+            }
         } else {
             logManager.nilError(category: category, origin: origin)
         }
