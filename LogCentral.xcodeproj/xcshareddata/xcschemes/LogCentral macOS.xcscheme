@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C3E3DD3B1DF3088200D7EB5F"
-               BuildableName = "LogCentral.framework"
-               BlueprintName = "LogCentral"
+               BlueprintIdentifier = "C3F408C02280875900BBF2E4"
+               BuildableName = "LogCentral_macOS.framework"
+               BlueprintName = "LogCentral macOS"
                ReferencedContainer = "container:LogCentral.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,16 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C3E3DD441DF3088200D7EB5F"
-               BuildableName = "LogCentralTests.xctest"
-               BlueprintName = "LogCentralTests"
+               BlueprintIdentifier = "C3F408C82280875900BBF2E4"
+               BuildableName = "LogCentral macOSTests.xctest"
+               BlueprintName = "LogCentral macOSTests"
                ReferencedContainer = "container:LogCentral.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C3E3DD3B1DF3088200D7EB5F"
-            BuildableName = "LogCentral.framework"
-            BlueprintName = "LogCentral"
+            BlueprintIdentifier = "C3F408C02280875900BBF2E4"
+            BuildableName = "LogCentral_macOS.framework"
+            BlueprintName = "LogCentral macOS"
             ReferencedContainer = "container:LogCentral.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C3E3DD3B1DF3088200D7EB5F"
-            BuildableName = "LogCentral.framework"
-            BlueprintName = "LogCentral"
+            BlueprintIdentifier = "C3F408C02280875900BBF2E4"
+            BuildableName = "LogCentral_macOS.framework"
+            BlueprintName = "LogCentral macOS"
             ReferencedContainer = "container:LogCentral.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C3E3DD3B1DF3088200D7EB5F"
-            BuildableName = "LogCentral.framework"
-            BlueprintName = "LogCentral"
+            BlueprintIdentifier = "C3F408C02280875900BBF2E4"
+            BuildableName = "LogCentral_macOS.framework"
+            BlueprintName = "LogCentral macOS"
             ReferencedContainer = "container:LogCentral.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

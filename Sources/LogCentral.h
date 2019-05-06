@@ -6,7 +6,7 @@
 //  Copyright © 2016 Henrik Akesson. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for LogCentral.
 FOUNDATION_EXPORT double LogCentralVersionNumber;

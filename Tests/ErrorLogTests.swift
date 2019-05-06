@@ -25,7 +25,11 @@ class ErrorLogTests: XCTestCase {
     func testErrorDicitionaryLog() {
         let dict = ["key1" : 1, "key2" : 2]
         log.error(in: .view, dict)
-        XCTAssertEqual(errorLogger.last, "[\"key2\": 2, \"key1\": 1]")
+        guard errorLogger.last == #"["key2": 2, "key1": 1]"#
+            || errorLogger.last == #"["key1": 1, "key2": 2]"# else {
+            XCTFail("Invalid value: \(errorLogger.last)")
+            return
+        }
     }
     
     func testErrorMessageLog() {

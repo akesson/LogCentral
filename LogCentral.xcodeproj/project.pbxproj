@@ -28,6 +28,27 @@
 		C3EE9D6C1DFF427A00724E5B /* ExampleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90F1DF33C7F0072C7C5 /* ExampleConfiguration.swift */; };
 		C3EE9D701DFFDFFC00724E5B /* OsLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE9D6F1DFFDFFC00724E5B /* OsLoggers.swift */; };
 		C3EE9D721DFFE09500724E5B /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE9D711DFFE09500724E5B /* LogLevel.swift */; };
+		C3F408CA2280875900BBF2E4 /* LogCentral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F408C12280875900BBF2E4 /* LogCentral.framework */; };
+		C3F408D92280880700BBF2E4 /* LogCentral.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E3DD3F1DF3088200D7EB5F /* LogCentral.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3F408DA2280880F00BBF2E4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90B1DF314470072C7C5 /* Activity.swift */; };
+		C3F408DB2280880F00BBF2E4 /* LogCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */; };
+		C3F408DC2280880F00BBF2E4 /* OsLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE9D6F1DFFDFFC00724E5B /* OsLoggers.swift */; };
+		C3F408DD2280880F00BBF2E4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE9D711DFFE09500724E5B /* LogLevel.swift */; };
+		C3F408DE2280880F00BBF2E4 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */; };
+		C3F408DF2280880F00BBF2E4 /* LoggerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C382E0901E0075C50070124D /* LoggerSpec.swift */; };
+		C3F408E02280880F00BBF2E4 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE89A962035CA0B000B9D4C /* Log.swift */; };
+		C3F408E12280880F00BBF2E4 /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5BECA20922BDB00310EE1 /* LogWriter.swift */; };
+		C3F408E32280896900BBF2E4 /* ExampleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */; };
+		C3F408E42280896900BBF2E4 /* ExampleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CCB90F1DF33C7F0072C7C5 /* ExampleConfiguration.swift */; };
+		C3F408E52280896900BBF2E4 /* LogCentralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */; };
+		C3F408E62280896900BBF2E4 /* TestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2052035AA230020C2FC /* TestLogger.swift */; };
+		C3F408E72280896900BBF2E4 /* ActivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA8B2072035AE800020C2FC /* ActivityTests.swift */; };
+		C3F408E82280896900BBF2E4 /* ErrorLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */; };
+		C3F408E92280896900BBF2E4 /* InfoLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49113C2036C43900E70DB1 /* InfoLogTests.swift */; };
+		C3F408EA2280896900BBF2E4 /* DebugLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49113E2036D01100E70DB1 /* DebugLogTests.swift */; };
+		C3F408EB2280896900BBF2E4 /* DefaultLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4911402036D8E200E70DB1 /* DefaultLogTests.swift */; };
+		C3F408EC2280896900BBF2E4 /* FaultLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA228022036DA5800270C20 /* FaultLogTests.swift */; };
+		C3F408ED2280896900BBF2E4 /* LogContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA228042036DC1700270C20 /* LogContentTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +58,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C3E3DD3B1DF3088200D7EB5F;
 			remoteInfo = LogCentral;
+		};
+		C3F408CB2280875900BBF2E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3E3DD331DF3088200D7EB5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3F408C02280875900BBF2E4;
+			remoteInfo = "LogCentral macOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -62,12 +90,16 @@
 		C3CCB90F1DF33C7F0072C7C5 /* ExampleConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleConfiguration.swift; sourceTree = "<group>"; };
 		C3E3DD3C1DF3088200D7EB5F /* LogCentral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogCentral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E3DD3F1DF3088200D7EB5F /* LogCentral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogCentral.h; sourceTree = "<group>"; };
-		C3E3DD401DF3088200D7EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E3DD401DF3088200D7EB5F /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		C3E3DD451DF3088200D7EB5F /* LogCentralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogCentralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCentralTests.swift; sourceTree = "<group>"; };
-		C3E3DD4C1DF3088200D7EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E3DD4C1DF3088200D7EB5F /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		C3EE9D6F1DFFDFFC00724E5B /* OsLoggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OsLoggers.swift; sourceTree = "<group>"; };
 		C3EE9D711DFFE09500724E5B /* LogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		C3F408C12280875900BBF2E4 /* LogCentral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogCentral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F408C42280875900BBF2E4 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
+		C3F408C92280875900BBF2E4 /* LogCentralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogCentralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F408D02280875900BBF2E4 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +118,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3F408BE2280875900BBF2E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3F408C62280875900BBF2E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3F408CA2280875900BBF2E4 /* LogCentral.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -100,10 +147,10 @@
 		C3E3DD321DF3088200D7EB5F = {
 			isa = PBXGroup;
 			children = (
+				C3F408D8228087BE00BBF2E4 /* Sources */,
+				C3F408E22280892D00BBF2E4 /* Tests */,
 				AFE7A3F22033393600548594 /* LogCentral.podspec */,
 				AFE7A3F3203339CE00548594 /* Documentation */,
-				C3E3DD3E1DF3088200D7EB5F /* LogCentral */,
-				C3E3DD491DF3088200D7EB5F /* LogCentralTests */,
 				C3E3DD3D1DF3088200D7EB5F /* Products */,
 				C3CCB90A1DF30B5F0072C7C5 /* README.md */,
 			);
@@ -114,15 +161,18 @@
 			children = (
 				C3E3DD3C1DF3088200D7EB5F /* LogCentral.framework */,
 				C3E3DD451DF3088200D7EB5F /* LogCentralTests.xctest */,
+				C3F408C12280875900BBF2E4 /* LogCentral.framework */,
+				C3F408C92280875900BBF2E4 /* LogCentralTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C3E3DD3E1DF3088200D7EB5F /* LogCentral */ = {
+		C3F408D8228087BE00BBF2E4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C3F408C42280875900BBF2E4 /* Info-macOS.plist */,
+				C3E3DD401DF3088200D7EB5F /* Info-iOS.plist */,
 				C3E3DD3F1DF3088200D7EB5F /* LogCentral.h */,
-				C3E3DD401DF3088200D7EB5F /* Info.plist */,
 				C3CCB90B1DF314470072C7C5 /* Activity.swift */,
 				C3CCB90D1DF3159E0072C7C5 /* LogCentral.swift */,
 				C3EE9D6F1DFFDFFC00724E5B /* OsLoggers.swift */,
@@ -132,15 +182,16 @@
 				AFE89A962035CA0B000B9D4C /* Log.swift */,
 				AFD5BECA20922BDB00310EE1 /* LogWriter.swift */,
 			);
-			path = LogCentral;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		C3E3DD491DF3088200D7EB5F /* LogCentralTests */ = {
+		C3F408E22280892D00BBF2E4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C3E3DD4C1DF3088200D7EB5F /* Info-iOS.plist */,
+				C3F408D02280875900BBF2E4 /* Info-macOS.plist */,
 				C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */,
 				C3CCB90F1DF33C7F0072C7C5 /* ExampleConfiguration.swift */,
-				C3E3DD4C1DF3088200D7EB5F /* Info.plist */,
 				C3E3DD4A1DF3088200D7EB5F /* LogCentralTests.swift */,
 				AFA8B2052035AA230020C2FC /* TestLogger.swift */,
 				AFA8B2072035AE800020C2FC /* ActivityTests.swift */,
@@ -151,7 +202,7 @@
 				AFA228022036DA5800270C20 /* FaultLogTests.swift */,
 				AFA228042036DC1700270C20 /* LogContentTests.swift */,
 			);
-			path = LogCentralTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,12 +216,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3F408BC2280875900BBF2E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3F408D92280880700BBF2E4 /* LogCentral.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C3E3DD3B1DF3088200D7EB5F /* LogCentral */ = {
+		C3E3DD3B1DF3088200D7EB5F /* LogCentral iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3E3DD501DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentral" */;
+			buildConfigurationList = C3E3DD501DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentral iOS" */;
 			buildPhases = (
 				C3E3DD371DF3088200D7EB5F /* Sources */,
 				C3E3DD381DF3088200D7EB5F /* Frameworks */,
@@ -182,14 +241,14 @@
 			);
 			dependencies = (
 			);
-			name = LogCentral;
+			name = "LogCentral iOS";
 			productName = LogCentral;
 			productReference = C3E3DD3C1DF3088200D7EB5F /* LogCentral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C3E3DD441DF3088200D7EB5F /* LogCentralTests */ = {
+		C3E3DD441DF3088200D7EB5F /* LogCentralTests iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3E3DD531DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentralTests" */;
+			buildConfigurationList = C3E3DD531DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentralTests iOS" */;
 			buildPhases = (
 				C3E3DD411DF3088200D7EB5F /* Sources */,
 				C3E3DD421DF3088200D7EB5F /* Frameworks */,
@@ -200,9 +259,45 @@
 			dependencies = (
 				C3E3DD481DF3088200D7EB5F /* PBXTargetDependency */,
 			);
-			name = LogCentralTests;
+			name = "LogCentralTests iOS";
 			productName = LogCentralTests;
 			productReference = C3E3DD451DF3088200D7EB5F /* LogCentralTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C3F408C02280875900BBF2E4 /* LogCentral macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3F408D22280875900BBF2E4 /* Build configuration list for PBXNativeTarget "LogCentral macOS" */;
+			buildPhases = (
+				C3F408BC2280875900BBF2E4 /* Headers */,
+				C3F408BD2280875900BBF2E4 /* Sources */,
+				C3F408BE2280875900BBF2E4 /* Frameworks */,
+				C3F408BF2280875900BBF2E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LogCentral macOS";
+			productName = "LogCentral macOS";
+			productReference = C3F408C12280875900BBF2E4 /* LogCentral.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C3F408C82280875900BBF2E4 /* LogCentral macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3F408D52280875900BBF2E4 /* Build configuration list for PBXNativeTarget "LogCentral macOSTests" */;
+			buildPhases = (
+				C3F408C52280875900BBF2E4 /* Sources */,
+				C3F408C62280875900BBF2E4 /* Frameworks */,
+				C3F408C72280875900BBF2E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3F408CC2280875900BBF2E4 /* PBXTargetDependency */,
+			);
+			name = "LogCentral macOSTests";
+			productName = "LogCentral macOSTests";
+			productReference = C3F408C92280875900BBF2E4 /* LogCentralTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -211,7 +306,7 @@
 		C3E3DD331DF3088200D7EB5F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Henrik Akesson";
 				TargetAttributes = {
@@ -223,6 +318,14 @@
 					C3E3DD441DF3088200D7EB5F = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+					};
+					C3F408C02280875900BBF2E4 = {
+						CreatedOnToolsVersion = 10.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					C3F408C82280875900BBF2E4 = {
+						CreatedOnToolsVersion = 10.2.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -240,8 +343,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C3E3DD3B1DF3088200D7EB5F /* LogCentral */,
-				C3E3DD441DF3088200D7EB5F /* LogCentralTests */,
+				C3E3DD3B1DF3088200D7EB5F /* LogCentral iOS */,
+				C3E3DD441DF3088200D7EB5F /* LogCentralTests iOS */,
+				C3F408C02280875900BBF2E4 /* LogCentral macOS */,
+				C3F408C82280875900BBF2E4 /* LogCentral macOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,6 +360,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C3E3DD431DF3088200D7EB5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3F408BF2280875900BBF2E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3F408C72280875900BBF2E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -314,13 +433,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3F408BD2280875900BBF2E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3F408DC2280880F00BBF2E4 /* OsLoggers.swift in Sources */,
+				C3F408E12280880F00BBF2E4 /* LogWriter.swift in Sources */,
+				C3F408E02280880F00BBF2E4 /* Log.swift in Sources */,
+				C3F408DE2280880F00BBF2E4 /* LogManager.swift in Sources */,
+				C3F408DF2280880F00BBF2E4 /* LoggerSpec.swift in Sources */,
+				C3F408DB2280880F00BBF2E4 /* LogCentral.swift in Sources */,
+				C3F408DA2280880F00BBF2E4 /* Activity.swift in Sources */,
+				C3F408DD2280880F00BBF2E4 /* LogLevel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3F408C52280875900BBF2E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3F408EB2280896900BBF2E4 /* DefaultLogTests.swift in Sources */,
+				C3F408E42280896900BBF2E4 /* ExampleConfiguration.swift in Sources */,
+				C3F408E32280896900BBF2E4 /* ExampleCategories.swift in Sources */,
+				C3F408E52280896900BBF2E4 /* LogCentralTests.swift in Sources */,
+				C3F408E72280896900BBF2E4 /* ActivityTests.swift in Sources */,
+				C3F408E82280896900BBF2E4 /* ErrorLogTests.swift in Sources */,
+				C3F408E92280896900BBF2E4 /* InfoLogTests.swift in Sources */,
+				C3F408ED2280896900BBF2E4 /* LogContentTests.swift in Sources */,
+				C3F408E62280896900BBF2E4 /* TestLogger.swift in Sources */,
+				C3F408EA2280896900BBF2E4 /* DebugLogTests.swift in Sources */,
+				C3F408EC2280896900BBF2E4 /* FaultLogTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		C3E3DD481DF3088200D7EB5F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C3E3DD3B1DF3088200D7EB5F /* LogCentral */;
+			target = C3E3DD3B1DF3088200D7EB5F /* LogCentral iOS */;
 			targetProxy = C3E3DD471DF3088200D7EB5F /* PBXContainerItemProxy */;
+		};
+		C3F408CC2280875900BBF2E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3F408C02280875900BBF2E4 /* LogCentral macOS */;
+			targetProxy = C3F408CB2280875900BBF2E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -455,12 +612,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = LogCentral/Info.plist;
+				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentral;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.akesson.${PROJECT_NAME}";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -477,12 +634,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = LogCentral/Info.plist;
+				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentral;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.akesson.${PROJECT_NAME}";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -494,10 +651,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = LogCentralTests/Info.plist;
+				INFOPLIST_FILE = "Tests/Info-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentralTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LogCentralTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -510,13 +667,119 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = LogCentralTests/Info.plist;
+				INFOPLIST_FILE = "Tests/Info-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentralTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LogCentralTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		C3F408D32280875900BBF2E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Sources/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.akesson.${PROJECT_NAME}";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C3F408D42280875900BBF2E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Sources/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.akesson.${PROJECT_NAME}";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C3F408D62280875900BBF2E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Tests/Info-macOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentral;
+				PRODUCT_NAME = LogCentralTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C3F408D72280875900BBF2E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Tests/Info-macOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.akesson.LogCentral;
+				PRODUCT_NAME = LogCentralTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -532,7 +795,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3E3DD501DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentral" */ = {
+		C3E3DD501DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentral iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3E3DD511DF3088200D7EB5F /* Debug */,
@@ -541,11 +804,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3E3DD531DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentralTests" */ = {
+		C3E3DD531DF3088200D7EB5F /* Build configuration list for PBXNativeTarget "LogCentralTests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3E3DD541DF3088200D7EB5F /* Debug */,
 				C3E3DD551DF3088200D7EB5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3F408D22280875900BBF2E4 /* Build configuration list for PBXNativeTarget "LogCentral macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3F408D32280875900BBF2E4 /* Debug */,
+				C3F408D42280875900BBF2E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3F408D52280875900BBF2E4 /* Build configuration list for PBXNativeTarget "LogCentral macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3F408D62280875900BBF2E4 /* Debug */,
+				C3F408D72280875900BBF2E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

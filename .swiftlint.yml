@@ -1,9 +1,9 @@
 included:
-  - LogCentral
+  - Sources
 
 excluded:
     # Activity.swift is excluded as it comes from a GitHub Gist
-  - LogCentral/Activity.swift
+  - Sources/Activity.swift
 
 disabled_rules:
   - trailing_whitespace
