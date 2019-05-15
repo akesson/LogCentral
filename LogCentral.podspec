@@ -6,8 +6,8 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author       = { "Henrik Akesson" => "info@akesson.mobi" }
   s.homepage     = "https://github.com/akesson/LogCentral"
-  s.platform     = :ios, "8.0"
+  s.platforms    = { :ios => "8.0", :osx => "10.12" }
   s.source       = { :git => "https://github.com/akesson/LogCentral.git", :tag => "#{s.version}" }
-  s.source_files  = "LogCentral/**/*.swift"
+  s.source_files = "Sources/**/*.swift"
 end
 
