@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C3F408C02280875900BBF2E4"
-               BuildableName = "LogCentral_macOS.framework"
+               BuildableName = "LogCentral.framework"
                BlueprintName = "LogCentral macOS"
                ReferencedContainer = "container:LogCentral.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C3F408C82280875900BBF2E4"
-               BuildableName = "LogCentral macOSTests.xctest"
+               BuildableName = "LogCentralTests.xctest"
                BlueprintName = "LogCentral macOSTests"
                ReferencedContainer = "container:LogCentral.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C3F408C02280875900BBF2E4"
-            BuildableName = "LogCentral_macOS.framework"
+            BuildableName = "LogCentral.framework"
             BlueprintName = "LogCentral macOS"
             ReferencedContainer = "container:LogCentral.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C3F408C02280875900BBF2E4"
-            BuildableName = "LogCentral_macOS.framework"
+            BuildableName = "LogCentral.framework"
             BlueprintName = "LogCentral macOS"
             ReferencedContainer = "container:LogCentral.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C3F408C02280875900BBF2E4"
-            BuildableName = "LogCentral_macOS.framework"
+            BuildableName = "LogCentral.framework"
             BlueprintName = "LogCentral macOS"
             ReferencedContainer = "container:LogCentral.xcodeproj">
          </BuildableReference>
