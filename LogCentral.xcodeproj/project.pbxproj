@@ -81,6 +81,8 @@
 		AFE89A962035CA0B000B9D4C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		AFE89A982035E68C000B9D4C /* ErrorLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogTests.swift; sourceTree = "<group>"; };
 		AFECF28E203478C30067B264 /* ConsoleMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConsoleMenu.png; sourceTree = "<group>"; };
+		C37B4417237ABE2A00B634E3 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		C37B4418237ABE3C00B634E3 /* LogCentral.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = LogCentral.podspec; sourceTree = "<group>"; };
 		C382E0901E0075C50070124D /* LoggerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerSpec.swift; sourceTree = "<group>"; };
 		C3C3B6671DFFE260000962E0 /* ExampleCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCategories.swift; sourceTree = "<group>"; };
 		C3C3B66B1DFFFAC3000962E0 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
@@ -153,6 +155,8 @@
 				AFE7A3F3203339CE00548594 /* Documentation */,
 				C3E3DD3D1DF3088200D7EB5F /* Products */,
 				C3CCB90A1DF30B5F0072C7C5 /* README.md */,
+				C37B4417237ABE2A00B634E3 /* Package.swift */,
+				C37B4418237ABE3C00B634E3 /* LogCentral.podspec */,
 			);
 			sourceTree = "<group>";
 		};
