@@ -13,7 +13,7 @@ public struct LogWriter: LoggerSpec {
     public let errorObjectWriter: LogErrorObjectWriter?
     
     public init(levels: [LogLevel]? = nil,
-                messageWriter: @escaping LogMessageWriter,
+                _ messageWriter: @escaping LogMessageWriter,
                 errorObjectWriter: LogErrorObjectWriter? = nil) {
         
         self.levels = levels ?? [.debug, .default, .error, .fault, .info]

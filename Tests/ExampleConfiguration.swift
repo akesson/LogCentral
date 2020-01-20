@@ -19,7 +19,7 @@ enum Categories: Int, CategorySpec {
     static let asArray:[Categories] = [.view, .model]
 }
 
-let crashLogger = LogWriter(levels: [.info], messageWriter: { log in
+let crashLogger = LogWriter(levels: [.info], { log in
     //log messages here
 }) { (error, origin) in
     //log handled error objects here
